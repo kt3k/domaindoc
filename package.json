@@ -1,0 +1,29 @@
+{
+  "name": "domain-draw",
+  "version": "1.0.0",
+  "description": "Draw domain overview map",
+  "main": "index.js",
+  "scripts": {
+    "test": "bulbo serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kt3k/domain-draw.git"
+  },
+  "keywords": [
+    "domain",
+    "ddd",
+    "modeling",
+    "model",
+    "ssg"
+  ],
+  "author": "Yoshiya Hinosawa <stibium121@gmail.com> (https://twitter.com/kt3k)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kt3k/domain-draw/issues"
+  },
+  "homepage": "https://github.com/kt3k/domain-draw#readme",
+  "devDependencies": {
+    "bulbo": "^6.2.0"
+  }
+}
