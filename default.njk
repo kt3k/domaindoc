@@ -1,0 +1,7 @@
+<h1>Domain</h1>
+
+{% for file in file.files %}
+  <p>{{ file.frontMatter.name | dump }}</p>
+{% endfor %}
+
+<hr>
