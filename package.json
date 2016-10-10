@@ -32,5 +32,8 @@
     "layout-wrapper": "^1.1.0",
     "nunjucks": "^2.5.2",
     "vinyl-accumulate": "^1.0.0"
+  },
+  "devDependencies": {
+    "bulbo": "^6.2.4"
   }
 }
