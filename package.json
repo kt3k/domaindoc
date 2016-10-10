@@ -1,7 +1,7 @@
 {
-  "name": "domain-draw",
+  "name": "domaindoc",
   "version": "1.0.0",
-  "description": "Draw domain overview map",
+  "description": "Generate documentation site of domain models from .md sources",
   "main": "index.js",
   "scripts": {
     "test": "bulbo serve"

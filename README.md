@@ -1,6 +1,6 @@
-# domain-draw
+# domaindoc
 
-> Draw domain overview map
+> Generate documentation site of domain models from .md sources
 
 # License
 
