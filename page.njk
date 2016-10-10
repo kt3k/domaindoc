@@ -1,1 +1,14 @@
-<h1>Model</h1>
+<title>{{ file.frontMatter.name }}</title>
+{% include "__head.njk" %}
+
+<p><a href="{{ basepath }}/index.html">TOP</a>
+<hr>
+<h1>{{ file.frontMatter.name }}</h1>
+
+<ul>
+{% for property in file.frontMatter.properties %}
+<li>{{ property.name }} ({{property.type}}) - {{property.desc}}
+{% endfor %}
+</ul>
+
+{% include "__footer.njk" %}

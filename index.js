@@ -16,16 +16,22 @@ module.exports = (bulbo, options) => {
   const output = options.output || 'index.html'
   const dest = options.dest || 'build'
   const layout = options.layout || __dirname
+  const data = {
+    pkg: require('./package')
+  }
 
   bulbo.asset(mdSource)
+  .watch('**/*.{md|njk}')
   .pipe(frontMatter())
+  .pipe(rename({extname: '.html'}))
   .pipe(accumulate(output, {debounce: true}))
-  .pipe(wrapper.nunjucks({layout, defaultLayout: 'default', extname: '.njk'}))
+  .pipe(wrapper.nunjucks({layout, defaultLayout: 'default', extname: '.njk', data}))
 
   bulbo.asset(mdSource)
+  .watch('**/*.{md|njk}')
   .pipe(frontMatter())
   .pipe(marked())
-  .pipe(wrapper.nunjucks({layout, defaultLayout: 'page', extname: '.njk'}))
+  .pipe(wrapper.nunjucks({layout, defaultLayout: 'page', extname: '.njk', data}))
 
   bulbo.port(port)
   bulbo.dest(dest)

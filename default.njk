@@ -1,7 +1,11 @@
-<h1>Domain</h1>
+<title>DomainDoc</title>
+{% include "__head.njk" %}
+
+<h1>The list of domain models</h1>
 
 {% for file in file.files %}
-  <p>{{ file.frontMatter.name | dump }}</p>
+  <h1><a href="{{ file.relative }}">{{ file.frontMatter.name }}</a></h1>
+  <pre>{{ file | dump }}</pre>
 {% endfor %}
 
-<hr>
+{% include "__footer.njk" %}
