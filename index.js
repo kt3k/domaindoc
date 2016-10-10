@@ -13,6 +13,7 @@ module.exports = (bulbo, options) => {
   const port = options.port || 8011
   const source = options.source || 'source'
   const mdSource = path.join(source, '**/*.md')
+  const cssSource = path.join(source, '**/*.css')
   const output = options.output || 'index.html'
   const dest = options.dest || 'build'
   const layout = options.layout || path.join(__dirname, 'view')
@@ -33,6 +34,8 @@ module.exports = (bulbo, options) => {
   .pipe(frontMatter())
   .pipe(marked())
   .pipe(wrapper.nunjucks({layout, defaultLayout: 'page', extname: '.njk', data}))
+
+  bulbo.asset(cssSource)
 
   bulbo.port(port)
   bulbo.dest(dest)
