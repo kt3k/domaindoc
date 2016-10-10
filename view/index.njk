@@ -5,8 +5,22 @@
 
 {% for file in file.files %}
   <h2><a href="{{ file.relative }}">{{ file.fm.name }}</a></h1>
-  <p></p>
-  <pre>{{ file | dump }}</pre>
+  {% if file.fm.desc %}
+    <p>{{ file.fm.desc }}</p>
+  {% endif %}
+
+  {% if file.fm.props and file.fm.props.length > 0 %}
+    <table>
+    <tr><th>PROPERTY<th>TYPE<th>DESCRIPTION
+    {% for prop in file.fm.props %}
+      <tr><td>{{ prop.name }}<td>{{ prop.type }}<td>{{ prop.desc }}
+    {% endfor %}
+    </table>
+  {% endif %}
+
+  <!--
+  <pre><small>{{ file | dump }}</small></pre>
+  -->
 {% endfor %}
 
 {% include viewDir + "/__footer.njk" %}
