@@ -3,15 +3,15 @@
 
 <p><a href="{{ basepath }}/index.html">TOP</a>
 <hr>
-<h1>{{ file.frontMatter.name }}</h1>
+<h1>{{ file.fm.name }}</h1>
 
-{% if file.frontMatter.desc %}
-  <p>{{ file.frontMatter.desc }}</p>
+{% if file.fm.desc %}
+  <p>{{ file.fm.desc }}</p>
 {% endif %}
 
-{% if file.frontMatter.props %}
+{% if file.fm.props %}
   <ul>
-  {% for property in file.frontMatter.props %}
+  {% for property in file.fm.props %}
     <li>{{ property.name }} ({{property.type}}) - {{property.desc}}
   {% endfor %}
   </ul>

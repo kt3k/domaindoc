@@ -24,14 +24,14 @@ module.exports = (bulbo, options) => {
 
   bulbo.asset(mdSource)
   .watch('**/*.{md|njk}')
-  .pipe(frontMatter())
+  .pipe(frontMatter({property: 'fm'}))
   .pipe(rename({extname: '.html'}))
   .pipe(accumulate(output, {debounce: true}))
-  .pipe(wrapper.nunjucks({layout, defaultLayout: 'default', extname: '.njk', data}))
+  .pipe(wrapper.nunjucks({layout, defaultLayout: 'index', extname: '.njk', data}))
 
   bulbo.asset(mdSource)
   .watch('**/*.{md|njk}')
-  .pipe(frontMatter())
+  .pipe(frontMatter({property: 'fm'}))
   .pipe(marked())
   .pipe(wrapper.nunjucks({layout, defaultLayout: 'page', extname: '.njk', data}))
 

@@ -4,7 +4,8 @@
 <h1>The list of domain models</h1>
 
 {% for file in file.files %}
-  <h1><a href="{{ file.relative }}">{{ file.frontMatter.name }}</a></h1>
+  <h2><a href="{{ file.relative }}">{{ file.fm.name }}</a></h1>
+  <p></p>
   <pre>{{ file | dump }}</pre>
 {% endfor %}
 
