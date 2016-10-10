@@ -15,9 +15,10 @@ module.exports = (bulbo, options) => {
   const mdSource = path.join(source, '**/*.md')
   const output = options.output || 'index.html'
   const dest = options.dest || 'build'
-  const layout = options.layout || __dirname
+  const layout = options.layout || path.join(__dirname, 'view')
   const data = {
-    pkg: require('./package')
+    pkg: require('./package'),
+    viewDir: layout
   }
 
   bulbo.asset(mdSource)

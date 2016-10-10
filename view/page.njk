@@ -1,5 +1,5 @@
 <title>{{ file.frontMatter.name }}</title>
-{% include "__head.njk" %}
+{% include viewDir + "/__head.njk" %}
 
 <p><a href="{{ basepath }}/index.html">TOP</a>
 <hr>
@@ -17,4 +17,4 @@
   </ul>
 {% endif %}
 
-{% include "__footer.njk" %}
+{% include viewDir + "/__footer.njk" %}

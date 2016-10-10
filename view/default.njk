@@ -1,5 +1,5 @@
 <title>DomainDoc</title>
-{% include "__head.njk" %}
+{% include viewDir + "/__head.njk" %}
 
 <h1>The list of domain models</h1>
 
@@ -8,4 +8,4 @@
   <pre>{{ file | dump }}</pre>
 {% endfor %}
 
-{% include "__footer.njk" %}
+{% include viewDir + "/__footer.njk" %}
