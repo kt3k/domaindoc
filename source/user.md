@@ -1,6 +1,7 @@
 ---
 name: User
-properties:
+desc: The user model.
+props:
   - name: charId
     type: string
     desc: The id of the character currently chosen

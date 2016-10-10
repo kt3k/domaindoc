@@ -1,4 +1,5 @@
 ---
 name: Character
-properties: []
+desc: The character model.
+props: []
 ---

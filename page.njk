@@ -5,10 +5,16 @@
 <hr>
 <h1>{{ file.frontMatter.name }}</h1>
 
-<ul>
-{% for property in file.frontMatter.properties %}
-<li>{{ property.name }} ({{property.type}}) - {{property.desc}}
-{% endfor %}
-</ul>
+{% if file.frontMatter.desc %}
+  <p>{{ file.frontMatter.desc }}</p>
+{% endif %}
+
+{% if file.frontMatter.props %}
+  <ul>
+  {% for property in file.frontMatter.props %}
+    <li>{{ property.name }} ({{property.type}}) - {{property.desc}}
+  {% endfor %}
+  </ul>
+{% endif %}
 
 {% include "__footer.njk" %}
