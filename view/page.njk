@@ -1,6 +1,7 @@
 <title>{{ file.frontMatter.name }}</title>
 {% include viewDir + "/__head.njk" %}
 
+<section>
 <p><a href="{{ basepath }}/index.html">TOP</a>
 <hr>
 <h1>{{ file.fm.name }}</h1>
@@ -18,3 +19,4 @@
 {% endif %}
 
 {% include viewDir + "/__footer.njk" %}
+</section>

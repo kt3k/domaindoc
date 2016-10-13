@@ -1,4 +1,5 @@
-const bulbo = require('bulbo')
+'use strict'
+
 const path = require('path')
 const accumulate = require('vinyl-accumulate')
 const wrapper = require('layout-wrapper')
@@ -6,9 +7,14 @@ const frontMatter = require('gulp-front-matter')
 const rename = require('gulp-rename')
 const consolidate = require('gulp-consolidate')
 const marked = require('gulp-marked')
+const nunjucks = require('nunjucks')
 
-module.exports = (bulbo, options) => {
-  options = options || {}
+let currentLogger = () => {}
+let options = {}
+
+module.exports = (bulbo) => {
+  bulbo.setLogger(currentLogger)
+  bulbo.debugPagePath('__domaindoc__')
 
   const port = options.port || 8011
   const source = options.source || 'source'
@@ -21,6 +27,8 @@ module.exports = (bulbo, options) => {
     pkg: require('./package'),
     viewDir: layout
   }
+
+  nunjucks.configure(layout)
 
   bulbo.asset(mdSource)
   .watch('**/*.{md|njk}')
@@ -42,3 +50,10 @@ module.exports = (bulbo, options) => {
 
   return bulbo
 }
+
+module.exports.setLogger = logger => { currentLogger = logger }
+
+module.exports.source = source => Object.assign(options, {source})
+module.exports.dest = dest => Object.assign(options, {dest})
+module.exports.port = port => Object.assign(options, {port})
+module.exports.output = output => Object.assign(options, {output})

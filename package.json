@@ -6,6 +6,7 @@
   "scripts": {
     "test": "bulbo serve"
   },
+  "bin": "bin.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kt3k/domain-draw.git"
@@ -30,6 +31,8 @@
     "gulp-marked": "^1.0.0",
     "gulp-rename": "^1.2.2",
     "layout-wrapper": "^1.1.0",
+    "minimisted": "^1.1.1",
+    "minirocket": "^2.0.0",
     "nunjucks": "^2.5.2",
     "vinyl-accumulate": "^1.0.0"
   },

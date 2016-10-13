@@ -1,6 +1,7 @@
 <title>DomainDoc</title>
 {% include viewDir + "/__head.njk" %}
 
+<section>
 <h1>The list of domain models</h1>
 
 {% for file in file.files %}
@@ -24,3 +25,4 @@
 {% endfor %}
 
 {% include viewDir + "/__footer.njk" %}
+</section>
