@@ -1,4 +1,4 @@
-# domaindoc v0.1.0
+# domaindoc v1.0.0
 
 > Generate documentation site of domain models from .md sources
 
