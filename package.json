@@ -6,7 +6,7 @@
   "scripts": {
     "test": "bulbo serve"
   },
-  "bin": "bin.js",
+  "bin": "cli.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kt3k/domain-draw.git"
