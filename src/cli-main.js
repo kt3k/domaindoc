@@ -1,3 +1,4 @@
+const chalk = require('chalk')
 const minirocket = require('minirocket')
 
 module.exports = argv => {
@@ -13,8 +14,7 @@ module.exports = argv => {
     serve: !action,
     [action]: true
   }, action => action(argv)).on('no-action', name => {
-    console.log(`Error: Action not found: ${name}`)
-    require('./actions/help')()
+    console.log(chalk.red('Error:'), `'${name}' is not a domaindoc command. See 'domaindoc --help'.`)
     process.exit(1)
   })
 }
