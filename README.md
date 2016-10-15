@@ -1,5 +1,7 @@
 # domaindoc v1.0.1
 
+[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+
 > Generate documentation site of domain models from .md sources
 
 `domaindoc` is a command line tool for creating documentation site of your domain models using markdown files.

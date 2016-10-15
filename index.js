@@ -5,14 +5,13 @@ const accumulate = require('vinyl-accumulate')
 const wrapper = require('layout-wrapper')
 const frontMatter = require('gulp-front-matter')
 const rename = require('gulp-rename')
-const consolidate = require('gulp-consolidate')
 const marked = require('gulp-marked')
 const nunjucks = require('nunjucks')
 
 const options = {}
 
-module.exports = (bulbo) => {
-  bulbo.setLogger(options.logger || () => {})
+module.exports = bulbo => {
+  bulbo.setLogger(options.logger || (() => {}))
   bulbo.debugPagePath('__domaindoc__')
 
   const port = options.port || 8011

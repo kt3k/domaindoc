@@ -4,7 +4,8 @@
   "description": "Generate documentation site of domain models from .md sources",
   "main": "index.js",
   "scripts": {
-    "test": "bulbo serve"
+    "test": "bulbo serve",
+    "lint": "standard"
   },
   "bin": "cli.js",
   "repository": {
@@ -36,5 +37,8 @@
     "minirocket": "^2.0.0",
     "nunjucks": "^2.5.2",
     "vinyl-accumulate": "^1.0.0"
+  },
+  "devDependencies": {
+    "standard": "^8.4.0"
   }
 }
