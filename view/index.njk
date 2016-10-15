@@ -1,8 +1,8 @@
-<title>DomainDoc</title>
+<title>{{ title }}</title>
 {% include viewDir + "/__head.njk" %}
 
 <section>
-<h1>The list of domain models</h1>
+<h1>{{ title }}</h1>
 
 {% for file in file.files %}
   <h2><a href="{{ file.relative }}">{{ file.fm.name }}</a></h1>

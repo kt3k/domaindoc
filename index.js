@@ -9,12 +9,10 @@ const consolidate = require('gulp-consolidate')
 const marked = require('gulp-marked')
 const nunjucks = require('nunjucks')
 
-const options = {
-  logger: () => {}
-}
+const options = {}
 
 module.exports = (bulbo) => {
-  bulbo.setLogger(options.logger)
+  bulbo.setLogger(options.logger || () => {})
   bulbo.debugPagePath('__domaindoc__')
 
   const port = options.port || 8011
@@ -24,11 +22,11 @@ module.exports = (bulbo) => {
   const output = options.output || 'index.html'
   const dest = options.dest || 'build'
   const layout = options.layout || path.join(__dirname, 'view')
-  const data = {
-    pkg: require('./package'),
-    viewDir: layout,
-    basepath: options.basepath
-  }
+  const title = options.title || 'The list of domain models'
+  const pkg = require('./package')
+  const viewDir = layout
+  const basepath = options.basepath
+  const data = { title, pkg, viewDir, basepath }
 
   nunjucks.configure(layout)
 
@@ -59,3 +57,4 @@ module.exports.dest = dest => Object.assign(options, {dest})
 module.exports.port = port => Object.assign(options, {port})
 module.exports.output = output => Object.assign(options, {output})
 module.exports.basepath = basepath => Object.assign(options, {basepath})
+module.exports.title = title => Object.assign(options, {title})
