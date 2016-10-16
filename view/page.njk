@@ -3,6 +3,13 @@
 
 <section>
 <p><a href="{{ basepath }}/index.html">TOP</a>
+<nav>
+<ul>
+{% for f in file.files %}
+  <li><a href="{{ basepath }}{{ f.relative }}">{{ f.fm.name }}</a>
+{% endfor %}
+</ul>
+</nav>
 <hr>
 <h1>{{ file.fm.name }}</h1>
 

@@ -10,6 +10,11 @@ const nunjucks = require('nunjucks')
 
 const options = {}
 
+/**
+ * Decorates bulbo instance with asset definitions.
+ * @param {Bulbo} bulbo
+ * @return {Bulbo}
+ */
 module.exports = bulbo => {
   bulbo.setLogger(options.logger || (() => {}))
   bulbo.debugPagePath('__domaindoc__')
@@ -30,16 +35,17 @@ module.exports = bulbo => {
   nunjucks.configure(layout)
 
   bulbo.asset(mdSource)
-  .watch('**/*.{md|njk}')
+  .watch('**/*.md')
   .pipe(frontMatter({property: 'fm'}))
   .pipe(rename({extname: '.html'}))
   .pipe(accumulate(output, {debounce: true}))
   .pipe(wrapper.nunjucks({layout, defaultLayout: 'index', extname: '.njk', data}))
 
   bulbo.asset(mdSource)
-  .watch('**/*.{md|njk}')
+  .watch('**/*.md')
   .pipe(frontMatter({property: 'fm'}))
   .pipe(marked())
+  .pipe(accumulate.through({debounce: true}))
   .pipe(wrapper.nunjucks({layout, defaultLayout: 'page', extname: '.njk', data}))
 
   bulbo.asset(cssSource)
