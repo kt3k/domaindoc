@@ -1,4 +1,4 @@
-# domaindoc v1.0.1
+# domaindoc v1.1.0
 
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
