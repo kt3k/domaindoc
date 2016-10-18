@@ -1,27 +1,24 @@
+{% import viewDir + "/__type.njk" as type %}
 <title>{{ title }}</title>
 {% include viewDir + "/__head.njk" %}
 
 <section>
 <h1>{{ title }}</h1>
 
-{% for file in file.files %}
-  <h2><a href="{{ file.relative }}">{{ file.fm.name }}</a></h1>
-  {% if file.fm.desc %}
-    <p>{{ file.fm.desc }}</p>
+{% for f in file.files %}
+  <h2><a href="{{ f.relative }}">{{ f.fm.name }}</a></h1>
+  {% if f.fm.desc %}
+    <p>{{ f.fm.desc }}</p>
   {% endif %}
 
-  {% if file.fm.props and file.fm.props.length > 0 %}
+  {% if f.fm.props and f.fm.props.length > 0 %}
     <table>
     <tr><th>PROPERTY<th>TYPE<th>DESCRIPTION
-    {% for prop in file.fm.props %}
-      <tr><td>{{ prop.name }}<td>{{ prop.type }}<td>{{ prop.desc }}
+    {% for prop in f.fm.props %}
+      <tr><td>{{ prop.name }}<td>{{ type.type(file.fileMap, prop.type) }}<td>{{ prop.desc }}
     {% endfor %}
     </table>
   {% endif %}
-
-  <!--
-  <pre><small>{{ file | dump }}</small></pre>
-  -->
 {% endfor %}
 
 {% include viewDir + "/__footer.njk" %}

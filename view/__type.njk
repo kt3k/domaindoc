@@ -1,0 +1,7 @@
+{% macro type(fileMap, type) -%}
+  {%- if fileMap[type] -%}
+    <a href="{{ basepath }}{{ fileMap[type].relative }}">{{ type }}</a>
+  {%- else -%}
+    {{ type }}
+  {%- endif -%}
+{%- endmacro %}

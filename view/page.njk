@@ -1,3 +1,4 @@
+{% import viewDir + "/__type.njk" as type %}
 <title>{{ file.fm.name }} | {{ file.fm.title }}</title>
 {% include viewDir + "/__head.njk" %}
 
@@ -20,7 +21,11 @@
 {% if file.fm.props %}
   <ul>
   {% for property in file.fm.props %}
-    <li>{{ property.name }} ({{property.type}}) - {{property.desc}}
+    <li>
+    {{ '{' }}{{ type.type(file.fileMap, property.type) }}{{ '}' }}
+    {{ property.name }}
+    -
+    {{ property.desc }}
   {% endfor %}
   </ul>
 {% endif %}

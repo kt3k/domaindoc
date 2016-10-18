@@ -7,8 +7,21 @@ const frontMatter = require('gulp-front-matter')
 const rename = require('gulp-rename')
 const marked = require('gulp-marked')
 const nunjucks = require('nunjucks')
+const through2 = require('through2')
 
 const options = {}
+
+const sortFiles = () => through2.obj((file, enc, cb) => {
+  file.files = file.files.slice(0).sort((x, y) => x.fm.name > y.fm.name ? 1 : -1)
+
+  const fileMap = {}
+  file.files.forEach(file => {
+    fileMap[file.fm.name] = file
+  })
+  file.fileMap = fileMap
+
+  cb(null, file)
+})
 
 /**
  * Decorates bulbo instance with asset definitions.
@@ -39,6 +52,7 @@ module.exports = bulbo => {
   .pipe(frontMatter({property: 'fm'}))
   .pipe(rename({extname: '.html'}))
   .pipe(accumulate(output, {debounce: true}))
+  .pipe(sortFiles())
   .pipe(wrapper.nunjucks({layout, defaultLayout: 'index', extname: '.njk', data}))
 
   bulbo.asset(mdSource)
@@ -46,6 +60,7 @@ module.exports = bulbo => {
   .pipe(frontMatter({property: 'fm'}))
   .pipe(marked())
   .pipe(accumulate.through({debounce: true}))
+  .pipe(sortFiles())
   .pipe(wrapper.nunjucks({layout, defaultLayout: 'page', extname: '.njk', data}))
 
   bulbo.asset(cssSource)
