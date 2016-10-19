@@ -17,6 +17,11 @@ const sortFiles = () => through2.obj((file, enc, cb) => {
   const fileMap = {}
   file.files.forEach(file => {
     fileMap[file.fm.name] = file
+    if (file.fm.alias) {
+      file.fm.alias.forEach(alias => {
+        fileMap[alias] = file
+      })
+    }
   })
   file.fileMap = fileMap
 

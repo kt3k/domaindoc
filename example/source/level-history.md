@@ -1,5 +1,7 @@
 ---
 name: LevelHistory
+alias:
+- LevelHistoryCollection
 desc: The history of the level.
 props:
   - name: levelId

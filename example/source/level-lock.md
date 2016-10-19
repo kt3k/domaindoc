@@ -1,5 +1,7 @@
 ---
 name: LevelLock
+alias:
+- LevelLockCollection
 desc: The lock of the level.
 props:
   - name: levelId
