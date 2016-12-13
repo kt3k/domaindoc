@@ -47,7 +47,13 @@ module.exports = bulbo => {
   const title = options.title || 'The list of domain models'
   const pkg = require('./package')
   const viewDir = layout
-  const basepath = options.basepath
+  const basepath = file => {
+    if (options.basepath) {
+      return options.basepath
+    }
+
+    return path.dirname(path.relative(file.relative, ''))
+  }
   const data = { title, pkg, viewDir, basepath }
 
   nunjucks.configure(layout)

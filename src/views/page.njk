@@ -3,11 +3,11 @@
 {% include viewDir + "/__head.njk" %}
 
 <section>
-<p><a href="{{ basepath }}/index.html">TOP</a>
+<p><a href="{{ basepath(file) }}/index.html">TOP</a>
 <nav>
 <ul>
 {% for f in file.files %}
-  <li><a href="{{ basepath }}{{ f.relative }}">{{ f.fm.name }}</a>
+  <li><a href="{{ basepath(file) }}/{{ f.relative }}">{{ f.fm.name }}</a>
 {% endfor %}
 </ul>
 </nav>
@@ -22,7 +22,7 @@
   <ul>
   {% for property in file.fm.props %}
     <li>
-    {{ '{' }}{{ type.type(file.fileMap, property.type) }}{{ '}' }}
+    {{ '{' }}{{ type.type(file.fileMap, property.type, basepath(file)) }}{{ '}' }}
     {{ property.name }}
     -
     {{ property.desc }}

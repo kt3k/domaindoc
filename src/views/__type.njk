@@ -1,6 +1,6 @@
-{% macro type(fileMap, type) -%}
+{% macro type(fileMap, type, basepath) -%}
   {%- if fileMap[type] -%}
-    <a href="{{ basepath }}{{ fileMap[type].relative }}">{{ type }}</a>
+    <a href="{{ basepath }}/{{ fileMap[type].relative }}">{{ type }}</a>
   {%- else -%}
     {{ type }}
   {%- endif -%}

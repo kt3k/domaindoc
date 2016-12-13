@@ -15,7 +15,7 @@
     <table>
     <tr><th>PROPERTY<th>TYPE<th>DESCRIPTION
     {% for prop in f.fm.props %}
-      <tr><td>{{ prop.name }}<td>{{ type.type(file.fileMap, prop.type) }}<td>{{ prop.desc }}
+      <tr><td>{{ prop.name }}<td>{{ type.type(file.fileMap, prop.type, basepath(file)) }}<td>{{ prop.desc }}
     {% endfor %}
     </table>
   {% endif %}
