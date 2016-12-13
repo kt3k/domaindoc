@@ -40,10 +40,10 @@ module.exports = bulbo => {
   const port = options.port || 8011
   const source = options.source || 'source'
   const mdSource = path.join(source, '**/*.md')
-  const cssSource = path.join(source, '**/*.css')
   const output = options.output || 'index.html'
   const dest = options.dest || 'build'
-  const layout = options.layout || path.join(__dirname, 'view')
+  const layout = options.layout || path.join(__dirname, 'src', 'views')
+  const cssSource = options.cssSource || path.join(__dirname, 'src', 'styles', '**/*.css')
   const title = options.title || 'The list of domain models'
   const pkg = require('./package')
   const viewDir = layout

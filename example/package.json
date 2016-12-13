@@ -2,7 +2,6 @@
   "name": "example",
   "version": "1.0.0",
   "description": "An example of domaindoc",
-  "main": "index.js",
   "scripts": {
     "test": "env BASEPATH=file:///Users/kt3k/tmp/domaindoc/example/build ../cli.js build",
     "test-serve": "../cli.js serve"
