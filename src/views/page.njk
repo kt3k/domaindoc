@@ -30,5 +30,7 @@
   </ul>
 {% endif %}
 
+{{ file.contents | safe }}
+
 {% include viewDir + "/__footer.njk" %}
 </section>
