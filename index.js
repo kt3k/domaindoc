@@ -8,6 +8,7 @@ const rename = require('gulp-rename')
 const marked = require('gulp-marked')
 const nunjucks = require('nunjucks')
 const through2 = require('through2')
+const trimlines = require('gulp-trimlines')
 
 const options = {}
 
@@ -65,6 +66,7 @@ module.exports = bulbo => {
   .pipe(accumulate(output, {debounce: true}))
   .pipe(sortFiles())
   .pipe(wrapper.nunjucks({layout, defaultLayout: 'index', extname: '.njk', data}))
+  .pipe(trimlines({leading: false}))
 
   bulbo.asset(mdSource)
   .watch('**/*.md')
@@ -73,6 +75,7 @@ module.exports = bulbo => {
   .pipe(accumulate.through({debounce: true}))
   .pipe(sortFiles())
   .pipe(wrapper.nunjucks({layout, defaultLayout: 'page', extname: '.njk', data}))
+  .pipe(trimlines({leading: false}))
 
   bulbo.asset(cssSource)
 
