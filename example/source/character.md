@@ -24,3 +24,5 @@ props:
     type: LevelLockCollection
     desc: The locks statuses of the levels in the current floor
 ---
+
+Character represents heros like Ma, Ellen, Emma.
