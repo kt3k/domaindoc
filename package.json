@@ -1,6 +1,6 @@
 {
   "name": "domaindoc",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Generate documentation site of domain models from .md sources",
   "main": "index.js",
   "scripts": {
