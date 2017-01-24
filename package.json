@@ -37,7 +37,7 @@
     "minimisted": "^1.1.1",
     "minirocket": "^2.0.0",
     "nunjucks": "^3.0.0",
-    "vinyl-accumulate": "^1.3.2"
+    "vinyl-accumulate": "^1.4.0"
   },
   "devDependencies": {
     "standard": "^8.4.0"
