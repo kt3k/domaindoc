@@ -2718,6 +2718,13 @@ vinyl-bufferstream@^1.0.1:
   dependencies:
     bufferstreams "1.0.1"
 
+vinyl-fork@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vinyl-fork/-/vinyl-fork-1.0.1.tgz#57a363f4dd7044ee383357042f941d1dfb89c403"
+  dependencies:
+    duplexer2 "^0.1.4"
+    merge-stream "^1.0.0"
+
 vinyl-fs@^2.2.1, vinyl-fs@^2.4.4:
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/vinyl-fs/-/vinyl-fs-2.4.4.tgz#be6ff3270cb55dfd7d3063640de81f25d7532239"
