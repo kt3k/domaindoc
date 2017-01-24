@@ -3,7 +3,6 @@
 const path = require('path')
 const accumulate = require('vinyl-accumulate')
 const frontMatter = require('gulp-front-matter')
-const rename = require('gulp-rename')
 const marked = require('gulp-marked')
 const nunjucks = require('nunjucks')
 const through2 = require('through2')
