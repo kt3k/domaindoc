@@ -389,7 +389,13 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
 
-consolidate@^0.14.1, consolidate@~0.14.0:
+consolidate@^0.14.1, consolidate@^0.14.5:
+  version "0.14.5"
+  resolved "https://registry.yarnpkg.com/consolidate/-/consolidate-0.14.5.tgz#5a25047bc76f73072667c8cb52c989888f494c63"
+  dependencies:
+    bluebird "^3.1.1"
+
+consolidate@~0.14.0:
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/consolidate/-/consolidate-0.14.1.tgz#506d529ef7e211624d2e4a5f337df8be136ef727"
   dependencies:
@@ -1142,9 +1148,9 @@ gulp-util@~2.2.9:
     through2 "^0.5.0"
     vinyl "^0.2.1"
 
-gulp-wrap@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/gulp-wrap/-/gulp-wrap-0.12.0.tgz#62909d6facb30b07e194a1545041178979368c22"
+gulp-wrap@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/gulp-wrap/-/gulp-wrap-0.13.0.tgz#90fb0b4a27a266433832ff7c6122db5c1ee894c6"
   dependencies:
     consolidate "^0.14.1"
     es6-promise "^3.1.2"
@@ -1529,12 +1535,12 @@ kind-of@^3.0.2:
   dependencies:
     is-buffer "^1.0.2"
 
-layout-wrapper@^1.1.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/layout-wrapper/-/layout-wrapper-1.1.1.tgz#c773b0430cb48ca4c63f6e18801f3bca73ffc31e"
+layout1@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/layout1/-/layout1-1.0.2.tgz#8c8fb0670aa31b32b2fd81d303492329e7571eee"
   dependencies:
-    consolidate "^0.14.1"
-    gulp-wrap "^0.12.0"
+    consolidate "^0.14.5"
+    gulp-wrap "^0.13.0"
 
 lazystream@^1.0.0:
   version "1.0.0"

@@ -2,7 +2,6 @@
 
 const path = require('path')
 const accumulate = require('vinyl-accumulate')
-const wrapper = require('layout-wrapper')
 const frontMatter = require('gulp-front-matter')
 const rename = require('gulp-rename')
 const marked = require('gulp-marked')
@@ -10,6 +9,7 @@ const nunjucks = require('nunjucks')
 const through2 = require('through2')
 const trimlines = require('gulp-trimlines')
 const fork = require('vinyl-fork')
+const layout1 = require('layout1')
 
 const options = {}
 
@@ -65,12 +65,14 @@ module.exports = bulbo => {
   .pipe(frontMatter({property: 'fm'}))
   .pipe(marked())
   .pipe(fork(
-    pipe => pipe(accumulate(output, {debounce: true}))
+    pipe =>
+      pipe(accumulate(output, { debounce: true }))
       .pipe(sortFiles())
-      .pipe(wrapper.nunjucks({layout, defaultLayout: 'index', extname: '.njk', data})),
-    pipe => pipe(accumulate.through(output, {debounce: true}))
+      .pipe(layout1.nunjucks(path.join(layout, 'index.njk'), { data })),
+    pipe =>
+      pipe(accumulate.through({ debounce: true }))
       .pipe(sortFiles())
-      .pipe(wrapper.nunjucks({layout, defaultLayout: 'page', extname: '.njk', data}))
+      .pipe(layout1.nunjucks(path.join(layout, 'page.njk'), { data }))
   ))
   .pipe(trimlines({leading: false}))
 

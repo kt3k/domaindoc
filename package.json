@@ -33,7 +33,7 @@
     "gulp-marked": "^1.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-trimlines": "^1.0.0",
-    "layout-wrapper": "^1.1.0",
+    "layout1": "^1.0.2",
     "minimisted": "^1.1.1",
     "minirocket": "^2.0.0",
     "nunjucks": "^3.0.0",
