@@ -40,6 +40,6 @@
     "vinyl-fork": "^1.0.1"
   },
   "devDependencies": {
-    "standard": "^8.4.0"
+    "standard": "^9.0.2"
   }
 }
