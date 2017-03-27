@@ -30,6 +30,16 @@ const sortFiles = () => through2.obj((file, enc, cb) => {
 })
 
 /**
+ * Splits the string into alnum only or non-alnum only parts.
+ */
+const split = expr => expr.match(/[a-zA-Z0-9]+|[^a-zA-Z0-9]+/g)
+
+/**
+ * Returns the intersection of the 2 arrays.
+ */
+const hasKey = (obj, arr) => arr.filter(key => obj[key]).length > 0
+
+/**
  * Decorates bulbo instance with asset definitions.
  * @param {Bulbo} bulbo
  * @return {Bulbo}
@@ -55,11 +65,15 @@ module.exports = bulbo => {
 
     return path.dirname(path.relative(file.relative, ''))
   }
-  const data = { title, pkg, viewDir, basepath }
+  const domainSymbol = options.symbol || '💎'
+  const externalSymbol = options.extSymbol || '🌐'
+
+  const data = { title, pkg, viewDir, basepath, domainSymbol, externalSymbol, split, hasKey }
+  data.opts = data
 
   nunjucks.configure(layout)
 
-  bulbo.asset(mdSource)
+  bulbo.asset([mdSource, '!**/README.md', '!**/CHANGELOG.md'])
   .watch('**/*.md')
   .pipe(frontMatter({property: 'fm'}))
   .pipe(marked())
@@ -90,3 +104,5 @@ module.exports.port = port => Object.assign(options, {port})
 module.exports.output = output => Object.assign(options, {output})
 module.exports.basepath = basepath => Object.assign(options, {basepath})
 module.exports.title = title => Object.assign(options, {title})
+module.exports.symbol = symbol => Object.assign(options, { symbol })
+module.exports.extSymbol = extSymbol => Object.assign(options, { extSymbol })

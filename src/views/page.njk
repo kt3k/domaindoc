@@ -7,27 +7,24 @@
 <nav>
 <ul>
 {% for f in file.files %}
-  <li><a href="{{ basepath(file) }}/{{ f.relative }}">{{ f.fm.name }}</a>
+  <li>{{ type.type(file.fileMap, f.fm.name, basepath(file), 'page', opts) }}</li>
 {% endfor %}
 </ul>
 </nav>
 <hr>
-<h1>{{ file.fm.name }}</h1>
+<h1>{{ opts.domainSymbol }}{{ file.fm.name }}</h1>
 
 {% if file.fm.desc %}
   <p>{{ file.fm.desc }}</p>
 {% endif %}
 
-{% if file.fm.props %}
-  <ul>
-  {% for property in file.fm.props %}
-    <li>
-    {{ '{' }}{{ type.type(file.fileMap, property.type, basepath(file)) }}{{ '}' }}
-    {{ property.name }}
-    -
-    {{ property.desc }}
-  {% endfor %}
-  </ul>
+{% if file.fm.props and file.fm.props.length > 0 %}
+  <table>
+    <tr><th>PROPERTY<th>TYPE<th>DESCRIPTION
+    {% for prop in file.fm.props %}
+      <tr><td>{{ prop.name }}<td>{{ type.type(file.fileMap, prop.type, basepath(file), 'page', opts) }}<td>{{ prop.desc }}
+    {% endfor %}
+  </table>
 {% endif %}
 
 {{ file.contents | safe }}

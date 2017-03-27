@@ -6,18 +6,20 @@
 <h1>{{ title }}</h1>
 
 {% for f in file.files %}
-  <h2><a href="{{ f.relative }}">{{ f.fm.name }}</a></h1>
-  {% if f.fm.desc %}
-    <p>{{ f.fm.desc }}</p>
-  {% endif %}
+  <h2>
+    <a name="{{ f.fm.name }}"></a>
+    {{ type.type(file.fileMap, f.fm.name, basepath(file), 'page', opts) }}
+    {% if f.fm.desc %}
+      <small>{{ f.fm.desc }}</small>
+    {% endif %}
+  </h2>
 
   {% if f.fm.props and f.fm.props.length > 0 %}
-    <table>
-    <tr><th>PROPERTY<th>TYPE<th>DESCRIPTION
+    <ul>
     {% for prop in f.fm.props %}
-      <tr><td>{{ prop.name }}<td>{{ type.type(file.fileMap, prop.type, basepath(file)) }}<td>{{ prop.desc }}
+      <li>{{ prop.name }} <small>{{ type.type(file.fileMap, prop.type, basepath(file), 'in-page', opts) }}</small>
     {% endfor %}
-    </table>
+    </ul>
   {% endif %}
 {% endfor %}
 

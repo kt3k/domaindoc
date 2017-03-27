@@ -1,6 +1,21 @@
-{% macro type(fileMap, type, basepath) -%}
+{% macro type(fileMap, type, basepath, linktype, opts) -%}
+  {%- if opts.hasKey(fileMap, opts.split(type)) -%}
+    {{ opts.domainSymbol }}
+  {%- else -%}
+    {{ opts.externalSymbol }}
+  {%- endif -%}
+  {%- for expr in opts.split(type) -%}
+    {{ typeRaw(fileMap, expr, basepath, linktype, opts) }}
+  {%- endfor -%}
+{%- endmacro %}
+
+{% macro typeRaw(fileMap, type, basepath, linktype, opts) -%}
   {%- if fileMap[type] -%}
-    <a href="{{ basepath }}/{{ fileMap[type].relative }}">{{ type }}</a>
+    {%- if linktype === 'in-page' -%}
+      <a href="#{{ fileMap[type].fm.name }}">{{ type }}</a>
+    {%- else -%}
+      <a href="{{ basepath }}/{{ fileMap[type].relative }}">{{ type }}</a>
+    {%- endif -%}
   {%- else -%}
     {{ type }}
   {%- endif -%}
