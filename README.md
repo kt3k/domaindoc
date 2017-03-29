@@ -94,6 +94,15 @@ name | string | The name of the property (required)
 type | string | The type of the property (required)
 desc | string | The description of the property (optional)
 
+# Example
+
+- [Demo document](http://kt3k.github.io/moneybit/)
+  - [The source code](https://github.com/kt3k/moneybit/tree/master/packages/moneybit-domain)
+
+<img src="https://kt3k.github.io/domaindoc/media/demo-page.png" />
+
+<img src="https://kt3k.github.io/domaindoc/media/demo-index.png" />
+
 # License
 
 MIT
