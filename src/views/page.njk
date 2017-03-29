@@ -1,15 +1,15 @@
-{% import viewDir + "/__type.njk" as type %}
-{% import viewDir + "/__btn.njk" as btn %}
-<title>{{ file.fm.name }} | {{ title }}</title>
-{% include viewDir + "/__head.njk" %}
+{% extends viewDir + "/layout.njk" %}
 
-<div class="section">
-<div class="container">
+{% block title %}
+{{ file.fm.name }} | {{ title }}
+{% endblock %}
+
+{% block content %}
 <div class="columns">
 <div class="column is-3">
 
 <aside class="menu">
-  <p class="menu-label"><a href="{{ basepath(file) }}/index.html">{{ title }}</a></p>
+  <p class="menu-label">Models</p>
   <ul class="menu-list">
   {% for f in file.files %}
     <li><span class="nav-item">{{ type.type(file.fileMap, f.fm.name, basepath(file), 'page', opts) }}</span>
@@ -66,9 +66,6 @@
 
 </div>
 
-{% include viewDir + "/__footer.njk" %}
-
 </div>
 </div>
-</div>
-</div>
+{% endblock %}
