@@ -81,17 +81,18 @@ You can use properties in YAML front matter in the markdown sources.
 
 name | type | meaning
 -----|------|---------
-name | string | The name of the domain model
-desc | string | The description of the domain model
-props | Property[] | The properties of the domain model
+name | string | The name of the domain model (required)
+desc | string | The description of the domain model (required)
+src  | string | The url of the source code of the model (optional)
+props | Property[] | The properties of the domain model (optional)
 
 Each *Property* object has the following properties in it.
 
 name | type | meaning
 -----|------|---------
-name | string | The name of the property
-type | string | The type of the property
-desc | string | The description of the property
+name | string | The name of the property (required)
+type | string | The type of the property (required)
+desc | string | The description of the property (optional)
 
 # License
 
