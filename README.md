@@ -99,6 +99,8 @@ desc | string | The description of the property (optional)
 - [Demo document](http://kt3k.github.io/moneybit/)
   - [The source code](https://github.com/kt3k/moneybit/tree/master/packages/moneybit-domain)
 
+**Screenshots:**
+
 <img src="https://kt3k.github.io/domaindoc/media/demo-page.png" />
 
 <img src="https://kt3k.github.io/domaindoc/media/demo-index.png" />
