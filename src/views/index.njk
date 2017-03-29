@@ -1,27 +1,55 @@
 {% import viewDir + "/__type.njk" as type %}
+{% import viewDir + "/__btn.njk" as btn %}
 <title>{{ title }}</title>
 {% include viewDir + "/__head.njk" %}
 
-<section>
+<div class="section">
+<div class="container">
 <h1>{{ title }}</h1>
 
+<div class="columns">
 {% for f in file.files %}
-  <h2>
+  <div class="column is-4">
     <a name="{{ f.fm.name }}"></a>
-    {{ type.type(file.fileMap, f.fm.name, basepath(file), 'page', opts) }}
-    {% if f.fm.desc %}
-      <small>{{ f.fm.desc }}</small>
-    {% endif %}
-  </h2>
+    <div class="card">
+      <header class="card-header">
+        <div class="level card-header-title">
+	  <div class="level-left">
+	    <p class="level-item">
+              {{ type.type(file.fileMap, f.fm.name, basepath(file), 'page', opts) }}
+	    </p>
+	  </div>
+	  <div class="level-right">
+	    <p class="level-item">
+	      {{ btn.source(f.fm.src) }}
+	    </p>
+	  </div>
+        </div>
+      </header>
 
-  {% if f.fm.props and f.fm.props.length > 0 %}
-    <ul>
-    {% for prop in f.fm.props %}
-      <li>{{ prop.name }} <small>{{ type.type(file.fileMap, prop.type, basepath(file), 'in-page', opts) }}</small>
-    {% endfor %}
-    </ul>
-  {% endif %}
+      <div class="card-content">
+        <div class="content">
+          {% if f.fm.props and f.fm.props.length > 0 %}
+            {% for prop in f.fm.props %}
+              <p>
+	      <b>{{ prop.name }}</b>
+	      <small>{{ type.type(file.fileMap, prop.type, basepath(file), 'page', opts) }}</small>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+
+      <footer class="card-footer">
+        <div class="card-footer-item">
+          {% if f.fm.desc %}{{ f.fm.desc }}{% endif %}
+	</div>
+      </footer>
+    </div>
+  </div>
+  {% if loop.index % 3 === 0 and not loop.last %}</div><div class="columns">{% endif %}
 {% endfor %}
+</div>
 
 {% include viewDir + "/__footer.njk" %}
-</section>
+</div>
+</div>

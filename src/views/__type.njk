@@ -1,9 +1,4 @@
 {% macro type(fileMap, type, basepath, linktype, opts) -%}
-  {%- if opts.hasKey(fileMap, opts.split(type)) -%}
-    {{ opts.domainSymbol }}
-  {%- else -%}
-    {{ opts.externalSymbol }}
-  {%- endif -%}
   {%- for expr in opts.split(type) -%}
     {{ typeRaw(fileMap, expr, basepath, linktype, opts) }}
   {%- endfor -%}

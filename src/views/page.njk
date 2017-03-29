@@ -1,33 +1,74 @@
 {% import viewDir + "/__type.njk" as type %}
-<title>{{ file.fm.name }} | {{ file.fm.title }}</title>
+{% import viewDir + "/__btn.njk" as btn %}
+<title>{{ file.fm.name }} | {{ title }}</title>
 {% include viewDir + "/__head.njk" %}
 
-<section>
-<p><a href="{{ basepath(file) }}/index.html">TOP</a>
-<nav>
-<ul>
-{% for f in file.files %}
-  <li>{{ type.type(file.fileMap, f.fm.name, basepath(file), 'page', opts) }}</li>
-{% endfor %}
-</ul>
-</nav>
-<hr>
-<h1>{{ opts.domainSymbol }}{{ file.fm.name }}</h1>
+<div class="section">
+<div class="container">
+<div class="columns">
+<div class="column is-3">
 
-{% if file.fm.desc %}
-  <p>{{ file.fm.desc }}</p>
-{% endif %}
+<aside class="menu">
+  <p class="menu-label"><a href="{{ basepath(file) }}/index.html">{{ title }}</a></p>
+  <ul class="menu-list">
+  {% for f in file.files %}
+    <li><span class="nav-item">{{ type.type(file.fileMap, f.fm.name, basepath(file), 'page', opts) }}</span>
+  {% endfor %}
+  </ul>
+</aside>
 
-{% if file.fm.props and file.fm.props.length > 0 %}
-  <table>
-    <tr><th>PROPERTY<th>TYPE<th>DESCRIPTION
-    {% for prop in file.fm.props %}
-      <tr><td>{{ prop.name }}<td>{{ type.type(file.fileMap, prop.type, basepath(file), 'page', opts) }}<td>{{ prop.desc }}
-    {% endfor %}
-  </table>
-{% endif %}
+</div>
 
-{{ file.contents | safe }}
+<div class="column">
+
+<div class="section">
+
+<div class="card">
+  <header class="card-header">
+    <div class="card-header-title level">
+      <div class="level-left">
+        {{ file.fm.name }}
+      </div>
+      <div class="level-right">
+        <p class="level-item">
+	  {{ btn.source(file.fm.src) }}
+	</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="card-content">
+    <div class="content">
+
+      {% if file.fm.desc %}<p>{{ file.fm.desc }}</p>{% endif %}
+
+      {% if file.fm.props and file.fm.props.length > 0 %}
+        <table class="table">
+          <tr><th>PROPERTY<th>TYPE<th>DESCRIPTION
+          {% for prop in file.fm.props %}
+            <tr><td>{{ prop.name }}<td>{{ type.type(file.fileMap, prop.type, basepath(file), 'page', opts) }}<td>{{ prop.desc }}
+          {% endfor %}
+        </table>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if file.contents %}
+    <footer class="card-footer">
+      <div class="card-footer-item">
+        <div class="content">
+          {{ file.contents | safe }}
+	</div>
+      </div>
+    </footer>
+  {% endif %}
+</div>
+
+</div>
 
 {% include viewDir + "/__footer.njk" %}
-</section>
+
+</div>
+</div>
+</div>
+</div>

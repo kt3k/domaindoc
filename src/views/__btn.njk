@@ -1,0 +1,5 @@
+{% macro source(url) %}
+  {% if url != null %}
+    <a class="button is-primary is-outlined" href="{{ url }}" target="_blank" style="font-weight: 400">Source</a>    
+  {% endif -%}
+{% endmacro %}
