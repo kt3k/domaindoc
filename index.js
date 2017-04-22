@@ -49,12 +49,17 @@ module.exports = bulbo => {
   bulbo.debugPagePath('__domaindoc__')
 
   const port = options.port || 8011
+
   const source = options.source || 'source'
   const mdSource = path.join(source, '**/*.md')
   const output = options.output || 'index.html'
   const dest = options.dest || 'build'
-  const layout = options.layout || path.join(__dirname, 'src', 'views')
-  const cssSource = options.cssSource || path.join(__dirname, 'src', 'styles', '**/*.css')
+
+  const src = { root: path.join(__dirname, 'src') }
+  const layout = options.layout || path.join(src.root, 'views')
+  const cssSource = options.cssSource || path.join(src.root, 'styles', '**/*.css')
+  const vendorSource = path.join(src.root, 'vendor', '**/*.*')
+
   const title = options.title || 'The list of domain models'
   const pkg = require('./package')
   const viewDir = layout
@@ -89,7 +94,8 @@ module.exports = bulbo => {
   ))
   .pipe(trimlines({leading: false}))
 
-  bulbo.asset(cssSource)
+  bulbo.asset(cssSource).base(src.root)
+  bulbo.asset(vendorSource).base(src.root)
 
   bulbo.port(port)
   bulbo.dest(dest)

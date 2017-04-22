@@ -44,7 +44,7 @@
 
       {% if file.fm.props and file.fm.props.length > 0 %}
         <table class="table">
-          <tr><th>PROPERTY<th>TYPE<th>DESCRIPTION
+          <tr><th>property<th>type<th>description
           {% for prop in file.fm.props %}
             <tr><td>{{ prop.name }}<td>{{ type.type(file.fileMap, prop.type, basepath(file), 'page', opts) }}<td>{{ prop.desc }}
           {% endfor %}
