@@ -10,18 +10,11 @@
     <a name="{{ f.fm.name }}"></a>
     <div class="card">
       <header class="card-header">
-        <div class="level card-header-title">
-	  <div class="level-left">
-	    <p class="level-item">
-              {{ type.type(file.fileMap, f.fm.name, basepath(file), 'page', opts) }}
-	    </p>
-	  </div>
-	  <div class="level-right">
-	    <p class="level-item">
-	      {{ btn.source(f.fm.src) }}
-	    </p>
-	  </div>
-        </div>
+        <p class="card-header-title">
+          {{ type.type(file.fileMap, f.fm.name, basepath(file), 'page', opts) }}
+        </p>
+        {{ cardHeaderIcon.edit(f.fm.edit) }}
+        {{ cardHeaderIcon.source(f.fm.src) }}
       </header>
 
       <div class="card-content">

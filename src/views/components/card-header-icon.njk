@@ -1,0 +1,16 @@
+{% macro source(url) %}
+  {% if url != null %}
+    <a class="card-header-icon" href="{{ url }}" target="_blank">
+      <span class="icon"><i class="fa fa-code"></i></span>
+    </a>
+  {% endif -%} 
+{% endmacro %}
+
+{% macro edit(url) %}
+  {% if url != null %}
+    <a class="card-header-icon" href="{{ url }}" target="_blank">
+      <span class="icon"><i class="fa fa-pencil"></i></span>
+    </a>
+  {% endif -%} 
+{% endmacro %}
+

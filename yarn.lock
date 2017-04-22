@@ -229,9 +229,9 @@ builtin-modules@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/builtin-modules/-/builtin-modules-1.1.1.tgz#270f076c5a72c02f5b65a47df94c5fe3a278892f"
 
-bulbo@^6.5.0:
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/bulbo/-/bulbo-6.5.0.tgz#2e555fe655b4f3491ebc0c579e5a111a11dfd742"
+bulbo@^6.7.0:
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/bulbo/-/bulbo-6.7.0.tgz#57c765a461524a6be6d0cf939a80d19108dda5de"
   dependencies:
     chalk "^1.1.1"
     chokidar "^1.4.2"
@@ -1620,9 +1620,9 @@ kind-of@^3.0.2:
   dependencies:
     is-buffer "^1.0.2"
 
-layout1@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/layout1/-/layout1-1.0.2.tgz#8c8fb0670aa31b32b2fd81d303492329e7571eee"
+layout1@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/layout1/-/layout1-1.1.0.tgz#b2e6687cd74ea84394e5f26644d25c4252338203"
   dependencies:
     consolidate "^0.14.5"
     gulp-wrap "^0.13.0"
@@ -2850,9 +2850,9 @@ verror@1.3.6:
   dependencies:
     extsprintf "1.0.2"
 
-vinyl-accumulate@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/vinyl-accumulate/-/vinyl-accumulate-1.4.0.tgz#85e4768b41afcdf3bdd8b5b42db93d326e75dcfd"
+vinyl-accumulate@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/vinyl-accumulate/-/vinyl-accumulate-1.4.1.tgz#2b22679df61a3543e973f7b6fa3e9f745d4fdaba"
   dependencies:
     debounce "^1.0.0"
     duplexer2 "^0.1.4"

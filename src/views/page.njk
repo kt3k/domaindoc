@@ -25,16 +25,11 @@
 
 <div class="card">
   <header class="card-header">
-    <div class="card-header-title level">
-      <div class="level-left">
-        {{ file.fm.name }}
-      </div>
-      <div class="level-right">
-        <p class="level-item">
-	  {{ btn.source(file.fm.src) }}
-	</p>
-      </div>
+    <div class="card-header-title">
+      {{ file.fm.name }}
     </div>
+    {{ cardHeaderIcon.edit(file.fm.edit) }}
+    {{ cardHeaderIcon.source(file.fm.src) }}
   </header>
 
   <div class="card-content">
