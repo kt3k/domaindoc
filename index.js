@@ -1,6 +1,7 @@
 'use strict'
 
 const path = require('path')
+const { join, dirname } = path
 const accumulate = require('vinyl-accumulate')
 const frontMatter = require('gulp-front-matter')
 const marked = require('gulp-marked')
@@ -51,64 +52,69 @@ module.exports = bulbo => {
   const port = options.port || 8011
 
   const source = options.source || 'source'
-  const mdSource = path.join(source, '**/*.md')
-  const output = options.output || 'index.html'
-  const dest = options.dest || 'build'
+  const mdSource = join(source, '**', '*.md')
+  const title = options.title || 'The list of Domain Models'
 
-  const src = { root: path.join(__dirname, 'src') }
-  const layout = options.layout || path.join(src.root, 'views')
-  const cssSource = options.cssSource || path.join(src.root, 'styles', '**/*.css')
-  const vendorSource = path.join(src.root, 'vendor', '**/*.*')
+  const src = join(__dirname, 'src')
 
-  const title = options.title || 'The list of domain models'
+  const paths = {
+    src,
+    layout: {
+      root: join(src, 'views'),
+      page: join(src, 'views', 'page.njk'),
+      index: join(src, 'views', 'index.njk')
+    },
+    css: join(src, 'styles', '**', '*.css'),
+    vendor: join(src, 'vendor', '**', '*.*'),
+    output: {
+      index: 'index.html'
+    },
+    dest: options.dest || 'build'
+  }
+
   const pkg = require('./package')
-  const viewDir = layout
   const basepath = file => {
     if (options.basepath) {
       return options.basepath
     }
 
-    return path.dirname(path.relative(file.relative, ''))
+    return dirname(path.relative(file.relative, ''))
   }
-  const domainSymbol = options.symbol || '💎'
-  const externalSymbol = options.extSymbol || '🌐'
 
-  const data = { title, pkg, viewDir, basepath, domainSymbol, externalSymbol, split, hasKey }
+  const data = { title, pkg, viewDir: paths.layout.root, basepath, split, hasKey }
   data.opts = data
 
-  nunjucks.configure(layout)
+  nunjucks.configure(paths.layout.root)
+
+  bulbo.port(port)
 
   bulbo.asset([mdSource, '!**/README.md', '!**/CHANGELOG.md'])
   .watch('**/*.md')
-  .pipe(frontMatter({property: 'fm'}))
+  .pipe(frontMatter({ property: 'fm' }))
   .pipe(marked())
   .pipe(fork(
     pipe =>
-      pipe(accumulate(output, { debounce: true }))
+      pipe(accumulate(paths.output.index, { debounce: true }))
       .pipe(sortFiles())
-      .pipe(layout1.nunjucks(path.join(layout, 'index.njk'), { data })),
+      .pipe(layout1.nunjucks(paths.layout.index, { data })),
     pipe =>
       pipe(accumulate.through({ debounce: true }))
       .pipe(sortFiles())
-      .pipe(layout1.nunjucks(path.join(layout, 'page.njk'), { data }))
+      .pipe(layout1.nunjucks(paths.layout.page, { data }))
   ))
-  .pipe(trimlines({leading: false}))
+  .pipe(trimlines({ leading: false }))
 
-  bulbo.asset(cssSource).base(src.root)
-  bulbo.asset(vendorSource).base(src.root)
+  bulbo.asset(paths.css).base(paths.src)
+  bulbo.asset(paths.vendor).base(paths.src)
 
-  bulbo.port(port)
-  bulbo.dest(dest)
+  bulbo.dest(paths.dest)
 
   return bulbo
 }
 
-module.exports.setLogger = logger => Object.assign(options, {logger})
-module.exports.source = source => Object.assign(options, {source})
-module.exports.dest = dest => Object.assign(options, {dest})
-module.exports.port = port => Object.assign(options, {port})
-module.exports.output = output => Object.assign(options, {output})
-module.exports.basepath = basepath => Object.assign(options, {basepath})
-module.exports.title = title => Object.assign(options, {title})
-module.exports.symbol = symbol => Object.assign(options, { symbol })
-module.exports.extSymbol = extSymbol => Object.assign(options, { extSymbol })
+module.exports.setLogger = logger => Object.assign(options, { logger }) // mainly for test
+module.exports.source = source => Object.assign(options, { source })
+module.exports.dest = dest => Object.assign(options, { dest })
+module.exports.port = port => Object.assign(options, { port })
+module.exports.basepath = basepath => Object.assign(options,  { basepath})
+module.exports.title = title => Object.assign(options, { title })
