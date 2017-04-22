@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/kt3k/domaindoc#readme",
   "dependencies": {
+    "branch-pipe": "^1.0.1",
     "bulbo": "^6.7.0",
     "chalk": "^1.1.3",
     "gulp-consolidate": "^0.2.0",
@@ -36,8 +37,7 @@
     "minimisted": "^1.1.1",
     "minirocket": "^2.0.0",
     "nunjucks": "^3.0.0",
-    "vinyl-accumulate": "^1.4.1",
-    "vinyl-fork": "^1.0.1"
+    "vinyl-accumulate": "^1.4.1"
   },
   "devDependencies": {
     "standard": "^10.0.0"

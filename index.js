@@ -8,7 +8,7 @@ const marked = require('gulp-marked')
 const nunjucks = require('nunjucks')
 const through2 = require('through2')
 const trimlines = require('gulp-trimlines')
-const fork = require('vinyl-fork')
+const branch = require('branch-pipe')
 const layout1 = require('layout1')
 
 const options = {}
@@ -92,16 +92,14 @@ module.exports = bulbo => {
   .watch('**/*.md')
   .pipe(frontMatter({ property: 'fm' }))
   .pipe(marked())
-  .pipe(fork(
-    pipe =>
-      pipe(accumulate(paths.output.index, { debounce: true }))
+  .pipe(branch.obj(src => [
+    src.pipe(accumulate(paths.output.index, { debounce: true }))
       .pipe(sortFiles())
       .pipe(layout1.nunjucks(paths.layout.index, { data })),
-    pipe =>
-      pipe(accumulate.through({ debounce: true }))
+    src.pipe(accumulate.through({ debounce: true }))
       .pipe(sortFiles())
       .pipe(layout1.nunjucks(paths.layout.page, { data }))
-  ))
+  ]))
   .pipe(trimlines({ leading: false }))
 
   bulbo.asset(paths.css).base(paths.src)
