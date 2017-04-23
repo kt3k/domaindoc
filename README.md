@@ -1,4 +1,4 @@
-# domaindoc v1.7.0
+# domaindoc v1.8.0
 
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
@@ -104,6 +104,10 @@ desc | string | The description of the property (optional)
 <img src="https://kt3k.github.io/domaindoc/media/demo-page.png" />
 
 <img src="https://kt3k.github.io/domaindoc/media/demo-index.png" />
+
+# History
+
+- 2017-04-23   v1.8.0   Serve index page at directory root.
 
 # License
 
