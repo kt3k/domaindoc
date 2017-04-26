@@ -75,24 +75,46 @@ And when you finish modifying the source files, then hit the command `domaindoc 
 
 And then you get html documentation files in `build/` directory.
 
-# Properties
+# YAML Properties
 
 You can use properties in YAML front matter in the markdown sources.
 
-name | type | meaning
------|------|---------
-name | string | The name of the domain model (required)
-desc | string | The description of the domain model (required)
-src  | string | The url of the source code of the model (optional)
+name  | type       | description
+------|------------|---------
+name  | string     | The name of the domain model (required)
+desc  | string     | The description of the domain model (required)
+src   | string     | The url of the source code of the model (optional)
 props | Property[] | The properties of the domain model (optional)
 
 Each *Property* object has the following properties in it.
 
-name | type | meaning
------|------|---------
+name | type   | description
+-----|--------|---------
 name | string | The name of the property (required)
 type | string | The type of the property (required)
 desc | string | The description of the property (optional)
+
+# Build Configuration
+
+`domaindoc` is configurable by creating `.domaindoc.yml`. You can configure the following properties:
+
+name     | type   | description
+---------|--------|-------------
+dest     | string | The destination dir
+source   | string | The source directory
+title    | string | The document title
+port     | number | The dev server port number
+basepath | string | The basepath of the site
+
+Example `.domaindoc.yml`:
+
+```yaml
+dest: doc/domain
+source: src/domain
+port: 50000
+title: My App Domain Models
+basepath: https://example.dom/domaindoc
+```
 
 # Example
 
@@ -107,6 +129,7 @@ desc | string | The description of the property (optional)
 
 # History
 
+- 2017-04-26   v2.0.0   Switch config file to yaml format.
 - 2017-04-23   v1.8.0   Serve index page at directory root.
 
 # License

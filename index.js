@@ -74,6 +74,10 @@ module.exports = bulbo => {
 
   const pkg = require('./package')
   const basepath = file => {
+    if (process.env.BASEPATH) {
+      return process.env.BASEPATH
+    }
+
     if (options.basepath) {
       return options.basepath
     }
@@ -110,9 +114,9 @@ module.exports = bulbo => {
   return bulbo
 }
 
-module.exports.setLogger = logger => Object.assign(options, { logger }) // mainly for test
+module.exports.setLogger = logger => Object.assign(options, { logger })
 module.exports.source = source => Object.assign(options, { source })
 module.exports.dest = dest => Object.assign(options, { dest })
 module.exports.port = port => Object.assign(options, { port })
-module.exports.basepath = basepath => Object.assign(options,  { basepath})
+module.exports.basepath = basepath => Object.assign(options, { basepath })
 module.exports.title = title => Object.assign(options, { title })

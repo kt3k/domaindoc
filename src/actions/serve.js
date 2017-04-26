@@ -1,14 +1,7 @@
 'use strict'
 
-const bulbo = require('bulbo')
+const liftoff = require('../util/liftoff')
 
-module.exports = () => bulbo.cli.liftoff('domaindoc', {configIsOptional: true})
-.then(domaindoc => {
-  try {
-    domaindoc(bulbo)
-
-    bulbo.serve()
-  } catch (e) {
-    console.log(e.stack)
-  }
-})
+module.exports = () => liftoff()
+  .then(bulbo => bulbo.serve())
+  .catch(e => console.log(e.stack || e))
