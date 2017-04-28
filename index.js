@@ -64,8 +64,7 @@ module.exports = bulbo => {
       page: join(src, 'views', 'page.njk'),
       index: join(src, 'views', 'index.njk')
     },
-    css: join(src, 'styles', '**', '*.css'),
-    vendor: join(src, 'vendor', '**', '*.*'),
+    asset: join(src, 'asset', '**', '*.*'),
     output: {
       index: 'index.html'
     },
@@ -106,8 +105,7 @@ module.exports = bulbo => {
   ]))
   .pipe(trimlines({ leading: false }))
 
-  bulbo.asset(paths.css).base(paths.src)
-  bulbo.asset(paths.vendor).base(paths.src)
+  bulbo.asset(paths.asset).base(paths.src)
 
   bulbo.dest(paths.dest)
 
