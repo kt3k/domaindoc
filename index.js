@@ -11,6 +11,8 @@ const trimlines = require('gulp-trimlines')
 const branch = require('branch-pipe')
 const layout1 = require('layout1')
 
+const createMdSource = require('./src/util/create-md-source')
+
 const moduleConfig = {
   logger: null,
   title: 'List of Domain Models',
@@ -62,7 +64,6 @@ module.exports = (bulbo, options) => {
   const port = options.port
 
   const source = options.source
-  const mdSource = join(source, '**', '*.md')
   const title = options.title
 
   const src = join(__dirname, 'src')
@@ -100,24 +101,25 @@ module.exports = (bulbo, options) => {
   nunjucks.configure(paths.layout.root)
 
   bulbo.port(port)
+  bulbo.dest(paths.dest)
 
-  bulbo.asset([mdSource, '!**/README.md', '!**/CHANGELOG.md'])
-  .watch('**/*.md')
-  .pipe(frontMatter({ property: 'fm' }))
-  .pipe(marked())
-  .pipe(branch.obj(src => [
-    src.pipe(accumulate(paths.output.index, { debounce: true }))
-      .pipe(sortFiles())
-      .pipe(layout1.nunjucks(paths.layout.index, { data })),
-    src.pipe(accumulate.through({ debounce: true }))
-      .pipe(sortFiles())
-      .pipe(layout1.nunjucks(paths.layout.page, { data }))
-  ]))
-  .pipe(trimlines({ leading: false }))
-
+  // set up asset pipeline
   bulbo.asset(paths.asset).base(paths.src)
 
-  bulbo.dest(paths.dest)
+  createMdSource(options.source).forEach(mdSource => {
+    bulbo.asset(mdSource.path)
+      .pipe(frontMatter({ property: 'fm' }))
+      .pipe(marked())
+      .pipe(branch.obj(src => [
+        src.pipe(accumulate(paths.output.index, { debounce: true }))
+          .pipe(sortFiles())
+          .pipe(layout1.nunjucks(paths.layout.index, { data })),
+        src.pipe(accumulate.through({ debounce: true }))
+          .pipe(sortFiles())
+          .pipe(layout1.nunjucks(paths.layout.page, { data }))
+      ]))
+      .pipe(trimlines({ leading: false }))
+  })
 
   return bulbo
 }
