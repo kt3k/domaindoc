@@ -10,13 +10,7 @@ module.exports = () => bulbo.cli.liftoff('domaindoc', {
 .then(({ module: domaindoc, config }) => {
   config = config || {}
 
-  if (config.port) { domaindoc.port(config.port) }
-  if (config.dest) { domaindoc.dest(config.dest) }
-  if (config.title) { domaindoc.title(config.title) }
-  if (config.source) { domaindoc.source(config.source) }
-  if (config.basepath) { domaindoc.basepath(config.basepath) }
-
-  domaindoc(bulbo)
+  domaindoc(bulbo, config)
 
   return bulbo
 })

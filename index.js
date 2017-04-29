@@ -11,7 +11,14 @@ const trimlines = require('gulp-trimlines')
 const branch = require('branch-pipe')
 const layout1 = require('layout1')
 
-const options = {}
+const moduleConfig = {
+  logger: null,
+  title: 'List of Domain Models',
+  source: 'source',
+  dest: 'build',
+  port: 8011,
+  basepath: null
+}
 
 const sortFiles = () => through2.obj((file, enc, cb) => {
   file.files = file.files.slice(0).sort((x, y) => x.fm.name > y.fm.name ? 1 : -1)
@@ -43,17 +50,20 @@ const hasKey = (obj, arr) => arr.filter(key => obj[key]).length > 0
 /**
  * Decorates bulbo instance with asset definitions.
  * @param {Bulbo} bulbo
+ * @param {Object} options The options
  * @return {Bulbo}
  */
-module.exports = bulbo => {
+module.exports = (bulbo, options) => {
+  options = Object.assign({}, moduleConfig, options)
+
   bulbo.setLogger(options.logger || (() => {}))
   bulbo.debugPagePath('__domaindoc__')
 
-  const port = options.port || 8011
+  const port = options.port
 
-  const source = options.source || 'source'
+  const source = options.source
   const mdSource = join(source, '**', '*.md')
-  const title = options.title || 'The list of Domain Models'
+  const title = options.title
 
   const src = join(__dirname, 'src')
 
@@ -68,7 +78,7 @@ module.exports = bulbo => {
     output: {
       index: 'index.html'
     },
-    dest: options.dest || 'build'
+    dest: options.dest
   }
 
   const pkg = require('./package')
@@ -112,9 +122,4 @@ module.exports = bulbo => {
   return bulbo
 }
 
-module.exports.setLogger = logger => Object.assign(options, { logger })
-module.exports.source = source => Object.assign(options, { source })
-module.exports.dest = dest => Object.assign(options, { dest })
-module.exports.port = port => Object.assign(options, { port })
-module.exports.basepath = basepath => Object.assign(options, { basepath })
-module.exports.title = title => Object.assign(options, { title })
+module.exports.setLogger = logger => Object.assign(moduleConfig, { logger })
