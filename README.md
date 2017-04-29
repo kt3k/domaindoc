@@ -1,6 +1,7 @@
-# domaindoc v2.2.0
+# <img src="https://kt3k.github.io/domaindoc/media/logo-with-text.svg" />
 
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![domaindoc](https://img.shields.io/npm/v/domaindoc.svg)](https://npm.im/domaindoc)
 
 > Generate documentation site of domain models from markdown sources
 
