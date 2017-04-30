@@ -131,6 +131,7 @@ basepath: https://example.dom/domaindoc
 
 # History
 
+- 2017-04-30   v2.3.1   Fix watch.
 - 2017-04-30   v2.3.0   Add logger title option.
 - 2017-04-26   v2.0.0   Switch config file to yaml format.
 - 2017-04-23   v1.8.0   Serve index page at directory root.
