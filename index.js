@@ -58,14 +58,10 @@ const hasKey = (obj, arr) => arr.filter(key => obj[key]).length > 0
 module.exports = (bulbo, options) => {
   options = Object.assign({}, moduleConfig, options)
 
-  bulbo.setLogger(options.logger || (() => {}))
-  bulbo.debugPagePath('__domaindoc__')
 
   const port = options.port
-
   const source = options.source
   const title = options.title
-
   const src = join(__dirname, 'src')
 
   const paths = {
@@ -100,8 +96,14 @@ module.exports = (bulbo, options) => {
 
   nunjucks.configure(paths.layout.root)
 
+  bulbo.setLogger(options.logger || (() => {}))
+  bulbo.debugPagePath('__domaindoc__')
   bulbo.port(port)
   bulbo.dest(paths.dest)
+
+  if (options.loggerTitle) {
+    bulbo.loggerTitle(options.loggerTitle)
+  }
 
   // set up asset pipeline
   bulbo.asset(paths.asset).base(paths.src)

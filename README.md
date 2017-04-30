@@ -99,13 +99,14 @@ desc | string | The description of the property (optional)
 
 `domaindoc` is configurable by creating `.domaindoc.yml`. You can configure the following properties:
 
-name     | type   | description
----------|--------|-------------
-dest     | string | The destination dir
-source   | string | The source directory
-title    | string | The document title
-port     | number | The dev server port number
-basepath | string | The basepath of the site
+name        | type   | description
+------------|--------|-------------
+dest        | string | The destination dir
+source      | string | The source directory
+title       | string | The document title
+port        | number | The dev server port number
+basepath    | string | The basepath of the site
+loggerTitle | string | The title of the logger
 
 Example `.domaindoc.yml`:
 
