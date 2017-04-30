@@ -110,6 +110,7 @@ module.exports = (bulbo, options) => {
 
   createMdSource(options.source).forEach(mdSource => {
     bulbo.asset(mdSource.path)
+      .watch(mdSource.watchPath)
       .pipe(frontMatter({ property: 'fm' }))
       .pipe(marked())
       .pipe(branch.obj(src => [
