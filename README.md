@@ -131,6 +131,7 @@ basepath: https://example.dom/domaindoc
 
 # History
 
+- 2017-05-01   v2.5.0   Improve multiple documents.
 - 2017-05-01   v2.4.0   Multiple document roots.
 - 2017-04-30   v2.3.1   Fix watch.
 - 2017-04-30   v2.3.0   Add logger title option.
