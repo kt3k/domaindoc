@@ -58,7 +58,6 @@ const hasKey = (obj, arr) => arr.filter(key => obj[key]).length > 0
 module.exports = (bulbo, options) => {
   options = Object.assign({}, moduleConfig, options)
 
-
   const port = options.port
   const source = options.source
   const title = options.title
@@ -108,21 +107,27 @@ module.exports = (bulbo, options) => {
   // set up asset pipeline
   bulbo.asset(paths.asset).base(paths.src)
 
+  const pipeline = bulbo.asset()
+
   createMdSource(options.source).forEach(mdSource => {
-    bulbo.asset(mdSource.path)
+    pipeline.asset(mdSource.path)
       .watch(mdSource.watchPath)
-      .pipe(frontMatter({ property: 'fm' }))
-      .pipe(marked())
-      .pipe(branch.obj(src => [
-        src.pipe(accumulate(paths.output.index, { debounce: true }))
-          .pipe(sortFiles())
-          .pipe(layout1.nunjucks(paths.layout.index, { data })),
-        src.pipe(accumulate.through({ debounce: true }))
-          .pipe(sortFiles())
-          .pipe(layout1.nunjucks(paths.layout.page, { data }))
-      ]))
-      .pipe(trimlines({ leading: false }))
   })
+
+  pipeline
+    .pipe(frontMatter({ property: 'fm' }))
+    .pipe(marked())
+    .pipe(branch.obj(src => [
+      src
+        .pipe(accumulate(paths.output.index, { debounce: true }))
+        .pipe(sortFiles())
+        .pipe(layout1.nunjucks(paths.layout.index, { data })),
+      src
+        .pipe(accumulate.through({ debounce: true }))
+        .pipe(sortFiles())
+        .pipe(layout1.nunjucks(paths.layout.page, { data }))
+    ]))
+    .pipe(trimlines({ leading: false }))
 
   return bulbo
 }

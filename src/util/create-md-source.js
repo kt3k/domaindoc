@@ -21,7 +21,7 @@ module.exports = source => {
 
 const createSourceFromString = source => ({
   path: join(source, '{,!(node_modules)**}', '!(README).md'),
-  watchPath: join(source, '**', '*.md'),
+  watchPath: join(source, '**', '!(README).md'),
   color: null
 })
 
