@@ -1178,6 +1178,14 @@ gulp-consolidate@^0.2.0:
     consolidate "~0.14.0"
     map-stream "0.0.4"
 
+gulp-data@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/gulp-data/-/gulp-data-1.2.1.tgz#a94b54de7d4f3b8ea1f40ef859749c24578cf12b"
+  dependencies:
+    gulp-util "^3.0.7"
+    through2 "^2.0.0"
+    util-extend "^1.0.1"
+
 gulp-front-matter@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/gulp-front-matter/-/gulp-front-matter-1.3.0.tgz#5ee466fbfafb33420bcd5e0267bb6819444ab06d"
@@ -1221,7 +1229,7 @@ gulp-trimlines@^1.0.0:
   dependencies:
     through2 "^0.6.3"
 
-gulp-util@^3, gulp-util@^3.0.3, gulp-util@^3.0.6:
+gulp-util@^3, gulp-util@^3.0.3, gulp-util@^3.0.6, gulp-util@^3.0.7:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
@@ -2901,6 +2909,10 @@ user-home@^2.0.0:
 util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
+
+util-extend@^1.0.1:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/util-extend/-/util-extend-1.0.3.tgz#a7c216d267545169637b3b6edc6ca9119e2ff93f"
 
 uuid@^3.0.0:
   version "3.0.1"

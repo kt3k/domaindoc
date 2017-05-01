@@ -32,6 +32,9 @@
 
   <div class="card-content">
     <div class="content">
+      {% if file.data.label %}
+        <span class="tag is-pulled-right">{{ file.data.label }}</span>
+      {% endif %}
 
       {% if file.fm.desc %}<p>{{ file.fm.desc }}</p>{% endif %}
 

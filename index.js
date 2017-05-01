@@ -10,6 +10,7 @@ const through2 = require('through2')
 const trimlines = require('gulp-trimlines')
 const branch = require('branch-pipe')
 const layout1 = require('layout1')
+const gulpdata = require('gulp-data')
 
 const createMdSource = require('./src/util/create-md-source')
 
@@ -22,8 +23,22 @@ const moduleConfig = {
   basepath: null
 }
 
-const sortFiles = () => through2.obj((file, enc, cb) => {
-  file.files = file.files.slice(0).sort((x, y) => x.fm.name > y.fm.name ? 1 : -1)
+const getSource = (file, mdSources) => {
+  for (let source of mdSources) {
+    if (file.path.indexOf(source.source) !== -1) {
+      return source
+    }
+  }
+}
+
+const sortFiles = mdSources => through2.obj((file, enc, cb) => {
+  file.files = file.files.slice(0).sort((x, y) => {
+    if (x.data.index !== y.data.index) {
+      return x.data.index - y.data.index
+    }
+
+    return x.fm.name > y.fm.name ? 1 : -1
+  })
 
   const fileMap = {}
   file.files.forEach(file => {
@@ -109,24 +124,27 @@ module.exports = (bulbo, options) => {
 
   const pipeline = bulbo.asset()
 
-  createMdSource(options.source).forEach(mdSource => {
+  const mdSources = createMdSource(options.source)
+
+  mdSources.forEach(mdSource => {
     pipeline.asset(mdSource.path)
       .watch(mdSource.watchPath)
   })
 
   pipeline
+    .pipe(gulpdata(file => {
+      return getSource(file, mdSources)
+    }))
     .pipe(frontMatter({ property: 'fm' }))
     .pipe(marked())
     .pipe(branch.obj(src => [
-      src
-        .pipe(accumulate(paths.output.index, { debounce: true }))
-        .pipe(sortFiles())
-        .pipe(layout1.nunjucks(paths.layout.index, { data })),
-      src
-        .pipe(accumulate.through({ debounce: true }))
-        .pipe(sortFiles())
-        .pipe(layout1.nunjucks(paths.layout.page, { data }))
+      src.pipe(accumulate(paths.output.index, { debounce: true })),
+      src.pipe(accumulate.through({ debounce: true }))
     ]))
+    .pipe(sortFiles(mdSources))
+    .pipe(layout1.nunjucks(file => (
+      file.relative === paths.output.index ? paths.layout.index : paths.layout.page
+    ), { data }))
     .pipe(trimlines({ leading: false }))
 
   return bulbo

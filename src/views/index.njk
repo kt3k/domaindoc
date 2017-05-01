@@ -7,7 +7,6 @@
 <div class="columns">
 {% for f in file.files %}
   <div class="column is-4">
-    <a name="{{ f.fm.name }}"></a>
     <div class="card">
       <header class="card-header">
         <p class="card-header-title">
@@ -18,12 +17,16 @@
       </header>
 
       <div class="card-content">
+        {% if f.data.label %}
+          <span class="tag is-pulled-right">{{ f.data.label }}</span>
+        {% endif %}
         <div class="content">
           {% if f.fm.props and f.fm.props.length > 0 %}
             {% for prop in f.fm.props %}
               <p>
-	      <b>{{ prop.name }}</b>
-	      <small>{{ type.type(file.fileMap, prop.type, basepath(file), 'page', opts) }}</small>
+                <b>{{ prop.name }}</b>
+                <small>{{ type.type(file.fileMap, prop.type, basepath(file), 'page', opts) }}</small>
+              </p>
             {% endfor %}
           {% endif %}
         </div>
@@ -32,7 +35,7 @@
       <footer class="card-footer">
         <div class="card-footer-item">
           {% if f.fm.desc %}{{ f.fm.desc }}{% endif %}
-	</div>
+        </div>
       </footer>
     </div>
   </div>

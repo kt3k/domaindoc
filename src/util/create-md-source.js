@@ -5,7 +5,7 @@ const { join } = require('path')
  */
 module.exports = source => {
   if (typeof source === 'string') {
-    return [createSourceFromString(source)]
+    return [createSourceFromString(source, 0)]
   }
 
   if (Array.isArray(source)) {
@@ -19,13 +19,20 @@ module.exports = source => {
   throw new Error(`source is one of string / array / object: ${typeof source} is given`)
 }
 
-const createSourceFromString = source => ({
+/**
+ * @param {string} source The source path (relative to cwd)
+ * @param {number} i The index of the source
+ */
+const createSourceFromString = (source, i) => ({
+  source,
   path: join(source, '{,!(node_modules)**}', '!(README).md'),
   watchPath: join(source, '**', '!(README).md'),
-  color: null
+  color: null,
+  index: i
 })
 
-const createSourceFromObject = source => Object.keys(source).map(key => {
-  const sourceObj = createSourceFromString(key)
-  sourceObj.color = source[key]
+const createSourceFromObject = source => Object.keys(source).map((key, i) => {
+  const sourceObj = createSourceFromString(key, i)
+
+  return Object.assign(sourceObj, source[key])
 })
