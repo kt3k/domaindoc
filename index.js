@@ -40,7 +40,7 @@ const getSource = mdSources => file => {
  * @return {Transform}
  */
 const sortFiles = () => through2.obj((file, enc, cb) => {
-  file.files = file.files.slice(0).sort((x, y) => {
+  const files = file.files = file.files.slice(0).sort((x, y) => {
     if (x.data.index !== y.data.index) {
       return x.data.index - y.data.index
     }
@@ -48,16 +48,37 @@ const sortFiles = () => through2.obj((file, enc, cb) => {
     return x.fm.name > y.fm.name ? 1 : -1
   })
 
+  const groupLabels = new Set()
   const fileMap = {}
-  file.files.forEach(file => {
+
+  files.forEach(file => {
     fileMap[file.fm.name] = file
+
+    // registers model alias names
     if (file.fm.alias) {
       file.fm.alias.forEach(alias => {
         fileMap[alias] = file
       })
     }
+
+    if (file.data.label) { groupLabels.add(file.data.label) }
   })
+
+  const groups = []
+
+  if (groupLabels.size > 0) {
+    groupLabels.forEach(groupLabel => {
+      groups.push({
+        label: groupLabel,
+        files: files.filter(file => file.data.label === groupLabel)
+      })
+    })
+  } else {
+    groups.push({ label: 'Models', files })
+  }
+
   file.fileMap = fileMap
+  file.groups = groups
 
   cb(null, file)
 })

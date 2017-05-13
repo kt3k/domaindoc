@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "bulbo serve",
-    "lint": "standard"
+    "lint": "standard",
+    "fix": "standard --fix"
   },
   "bin": "cli.js",
   "repository": {
