@@ -35,6 +35,7 @@
     "gulp-marked": "^1.0.0",
     "gulp-trimlines": "^1.0.0",
     "layout1": "^1.1.0",
+    "micromatch": "^2.3.11",
     "minimisted": "^1.1.1",
     "minirocket": "^2.0.0",
     "nunjucks": "^3.0.0",

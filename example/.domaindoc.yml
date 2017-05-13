@@ -2,7 +2,7 @@ port: 9012
 title: demo
 loggerTitle: demo
 source:
-  app-source:
-    label: App
   source:
     label: Core
+  app-source:
+    label: App

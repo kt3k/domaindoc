@@ -1,5 +1,3 @@
-'use strict'
-
 const path = require('path')
 const { join, dirname } = path
 const accumulate = require('vinyl-accumulate')
@@ -23,9 +21,15 @@ const moduleConfig = {
   basepath: null
 }
 
-const getSource = (file, mdSources) => {
+/**
+ * Gets the source group which the given file belongs to.
+ * @param {Source[]} mdSources The source groups
+ * @param {Vinyl} file The file
+ * @return {Source}
+ */
+const getSource = mdSources => file => {
   for (let source of mdSources) {
-    if (file.path.indexOf(source.source) !== -1) {
+    if (source.isMatch(file.relative)) {
       return source
     }
   }
@@ -78,7 +82,6 @@ module.exports = (bulbo, options) => {
   options = Object.assign({}, moduleConfig, options)
 
   const port = options.port
-  const source = options.source
   const title = options.title
   const src = join(__dirname, 'src')
 
@@ -136,7 +139,7 @@ module.exports = (bulbo, options) => {
   })
 
   pipeline
-    .pipe(gulpdata(file => getSource(file, mdSources)))
+    .pipe(gulpdata(getSource(mdSources)))
     .pipe(frontMatter({ property: 'fm' }))
     .pipe(marked())
     .pipe(branch.obj(src => [

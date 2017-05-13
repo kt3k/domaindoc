@@ -1,4 +1,5 @@
 const { join } = require('path')
+const Source = require('./source')
 
 /**
  * @param {string|string[]|Object}
@@ -23,10 +24,10 @@ module.exports = source => {
  * @param {string} source The source path (relative to cwd)
  * @param {number} i The index of the source
  */
-const createSourceFromString = (source, i) => ({
+const createSourceFromString = (source, i) => new Source({
   source,
-  path: join('source{', ',', '!(node_modules)', '}!(README).md'),
-  watchPath: join('source{', ',', '!(node_modules)', '}!(README).md'),
+  path: join(`${source}{`, ',', '!(node_modules)', '}!(README).md'),
+  watchPath: join(`${source}{`, ',', '!(node_modules)', '}!(README).md'),
   color: null,
   index: i
 })
