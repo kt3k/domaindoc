@@ -22,6 +22,13 @@
 <div class="section">
 
 <div class="card">
+  {% if file.data.label %}
+    <header class="card-header" {% if file.data.color %}style="background-color: {{ file.data.color }}"{% endif %}>
+      <p class="card-header-title">
+        {{ file.data.label }}
+      </p>
+    </header>
+  {% endif %}
   <header class="card-header">
     <div class="card-header-title">
       {{ file.fm.name }}
@@ -32,10 +39,6 @@
 
   <div class="card-content">
     <div class="content">
-      {% if file.data.label %}
-        <span class="tag is-pulled-right">{{ file.data.label }}</span>
-      {% endif %}
-
       {% if file.fm.desc %}<p>{{ file.fm.desc }}</p>{% endif %}
 
       {% if file.fm.props and file.fm.props.length > 0 %}

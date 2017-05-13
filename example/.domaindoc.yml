@@ -4,5 +4,8 @@ loggerTitle: demo
 source:
   source:
     label: Core
+    color: '#eff'
   app-source:
     label: App
+    color: '#fee'
+

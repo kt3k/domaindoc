@@ -8,6 +8,13 @@
 {% for f in file.files %}
   <div class="column is-4">
     <div class="card">
+      {% if f.data.label %}
+        <header class="card-header" {% if f.data.color %}style="background-color: {{ f.data.color }}"{% endif %}>
+          <p class="card-header-title">
+            {{ f.data.label }}
+          </p>
+        </header>
+      {% endif %}
       <header class="card-header">
         <p class="card-header-title">
           {{ type.type(file.fileMap, f.fm.name, basepath(file), 'page', opts) }}
@@ -17,9 +24,6 @@
       </header>
 
       <div class="card-content">
-        {% if f.data.label %}
-          <span class="tag is-pulled-right">{{ f.data.label }}</span>
-        {% endif %}
         <div class="content">
           {% if f.fm.props and f.fm.props.length > 0 %}
             {% for prop in f.fm.props %}
