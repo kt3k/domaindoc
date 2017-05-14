@@ -150,7 +150,7 @@ module.exports = (bulbo, options) => {
   // set up asset pipeline
   bulbo.asset(paths.asset).base(paths.src)
 
-  const pipeline = bulbo.asset()
+  const pipeline = bulbo.asset().base(process.cwd())
 
   const mdSources = createMdSource(options.source)
 
