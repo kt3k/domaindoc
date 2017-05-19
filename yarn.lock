@@ -24,6 +24,10 @@ acorn@^3.0.4:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-3.3.0.tgz#45e37fb39e8da3f25baee3ff5369e2bb5f22017a"
 
+action-selector@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/action-selector/-/action-selector-1.0.0.tgz#572f4bd8144183fd32da5d52c90932e1dd77db49"
+
 ajv-keywords@^1.0.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-1.5.1.tgz#314dd0a4b3368fad3dfcdc54ede6171b886daf3c"

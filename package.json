@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/kt3k/domaindoc#readme",
   "dependencies": {
+    "action-selector": "^1.0.0",
     "branch-pipe": "^1.0.1",
     "bulbo": "^6.11.0",
     "chalk": "^1.1.3",
@@ -38,7 +39,6 @@
     "layout1": "^1.1.0",
     "micromatch": "^2.3.11",
     "minimisted": "^1.1.1",
-    "minirocket": "^2.0.0",
     "nunjucks": "^3.0.0",
     "require-yaml": "^0.0.1",
     "vinyl-accumulate": "^1.4.1"
