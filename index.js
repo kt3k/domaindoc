@@ -27,13 +27,7 @@ const moduleConfig = {
  * @param {Vinyl} file The file
  * @return {Source}
  */
-const getSource = mdSources => file => {
-  for (let source of mdSources) {
-    if (source.isMatch(file.relative)) {
-      return source
-    }
-  }
-}
+const getSource = mdSources => file => mdSources.find(source => source.isMatch(file.relative))
 
 /**
  * Sorts files and creates file mapping according to alias prop in frontmatters.
