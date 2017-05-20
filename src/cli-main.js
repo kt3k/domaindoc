@@ -1,5 +1,4 @@
 const chalk = require('chalk')
-const minirocket = require('minirocket')
 const { select } = require('action-selector')
 
 module.exports = argv => new Cli(argv).main()
