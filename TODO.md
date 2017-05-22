@@ -2,7 +2,9 @@
 
 - Add fm.type optional property
 - Show in tree structure of has-a relationship
-- Add fm.group property
+- Show the model's owners, for example Credit's owner is Trade etc.
+
+# DONE
 - Enable multiple source directories
 - Make configfile yaml .domodoc.yml
 - .domodoc.yml
@@ -13,5 +15,3 @@
     dest: build
     port: 9660
     basepath: ./
-- Rename to dmdoc, dmmd, mddm, dodoc, modoc, moddoc, domodoc, modeldown, modown, momd
-- Show the model's owners, for example Credit's owner is Trade etc.
