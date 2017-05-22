@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const berber = require('berber')
 const { asset } = berber
 
