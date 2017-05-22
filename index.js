@@ -1,3 +1,6 @@
+const berber = require('berber')
+const { asset } = berber
+
 const path = require('path')
 const { join, dirname } = path
 const accumulate = require('vinyl-accumulate')
@@ -12,7 +15,7 @@ const gulpdata = require('gulp-data')
 
 const createMdSource = require('./src/util/create-md-source')
 
-const moduleConfig = {
+const defaultConfig = {
   logger: null,
   title: 'List of Domain Models',
   source: 'source',
@@ -83,21 +86,23 @@ const sortFiles = () => through2.obj((file, enc, cb) => {
 const split = expr => expr.match(/[a-zA-Z0-9]+|[^a-zA-Z0-9]+/g)
 
 /**
- * Returns the intersection of the 2 arrays.
+ * Returns true if obj has any truthy value for any of arr's key names.
+ * @return {boolean}
  */
 const hasKey = (obj, arr) => arr.filter(key => obj[key]).length > 0
 
-/**
- * Decorates bulbo instance with asset definitions.
- * @param {Bulbo} bulbo
- * @param {Object} options The options
- * @return {Bulbo}
- */
-module.exports = (bulbo, options) => {
-  options = Object.assign({}, moduleConfig, options)
+berber.name('domaindoc')
+berber.configName('.domaindoc')
 
-  const port = options.port
-  const title = options.title
+/**
+ * Build berber pipelines from the given config
+ * @param {Object} options The options
+ */
+berber.on('config', config => {
+  config = Object.assign({}, defaultConfig, config)
+
+  const port = config.port
+  const title = config.title
   const src = join(__dirname, 'src')
 
   const paths = {
@@ -111,7 +116,7 @@ module.exports = (bulbo, options) => {
     output: {
       index: 'index.html'
     },
-    dest: options.dest
+    dest: config.dest
   }
 
   const pkg = require('./package')
@@ -120,8 +125,8 @@ module.exports = (bulbo, options) => {
       return process.env.BASEPATH
     }
 
-    if (options.basepath) {
-      return options.basepath
+    if (config.basepath) {
+      return config.basepath
     }
 
     return dirname(path.relative(file.relative, ''))
@@ -132,21 +137,18 @@ module.exports = (bulbo, options) => {
 
   nunjucks.configure(paths.layout.root)
 
-  bulbo.setLogger(options.logger || (() => {}))
-  bulbo.debugPagePath('__domaindoc__')
-  bulbo.port(port)
-  bulbo.dest(paths.dest)
+  berber.debugPagePath('__domaindoc__')
+  berber.port(port)
+  berber.dest(paths.dest)
 
-  if (options.loggerTitle) {
-    bulbo.loggerTitle(options.loggerTitle)
-  }
+  berber.loggerTitle(config.loggerTitle || 'domaindoc')
 
   // set up asset pipeline
-  bulbo.asset(paths.asset).base(paths.src)
+  asset(paths.asset).base(paths.src)
 
-  const pipeline = bulbo.asset().base(process.cwd())
+  const pipeline = asset().base(process.cwd())
 
-  const mdSources = createMdSource(options.source)
+  const mdSources = createMdSource(config.source)
 
   mdSources.forEach(mdSource => {
     pipeline.asset(mdSource.path)
@@ -166,8 +168,4 @@ module.exports = (bulbo, options) => {
       file.relative === paths.output.index ? paths.layout.index : paths.layout.page
     ), { data }))
     .pipe(trimlines({ leading: false }))
-
-  return bulbo
-}
-
-module.exports.setLogger = logger => Object.assign(moduleConfig, { logger })
+})
