@@ -4,11 +4,13 @@
   "description": "Generate documentation site of domain models from .md sources",
   "main": "index.js",
   "scripts": {
-    "test": "bulbo serve",
+    "test": "kocha test",
+    "cov": "nyc npm test",
+    "codecov": "npm run cov && codecov",
     "lint": "standard",
     "fix": "standard --fix"
   },
-  "bin": "index.js",
+  "bin": "./cli.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kt3k/domaindoc.git"
@@ -41,6 +43,15 @@
     "vinyl-accumulate": "^1.4.1"
   },
   "devDependencies": {
+    "codecov": "^3.0.2",
+    "kocha": "^1.9.1",
+    "nyc": "^12.0.1",
     "standard": "^10.0.0"
+  },
+  "nyc": {
+    "reporter": [
+      "text-summary",
+      "lcov"
+    ]
   }
 }
