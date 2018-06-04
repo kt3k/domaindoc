@@ -46,7 +46,7 @@
     "codecov": "^3.0.2",
     "kocha": "^1.9.1",
     "nyc": "^12.0.1",
-    "standard": "^10.0.0"
+    "standard": "^11.0.1"
   },
   "nyc": {
     "reporter": [
