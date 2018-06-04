@@ -1,6 +1,7 @@
 # <img src="https://kt3k.github.io/domaindoc/media/logo-with-text.svg" />
 
-[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![CircleCI](https://circleci.com/gh/kt3k/domaindoc.svg?style=svg)](https://circleci.com/gh/kt3k/domaindoc)
+[![codecov](https://codecov.io/gh/kt3k/domaindoc/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/domaindoc)
 [![domaindoc](https://img.shields.io/npm/v/domaindoc.svg)](https://npm.im/domaindoc)
 
 > Generate documentation site of domain models from markdown sources
