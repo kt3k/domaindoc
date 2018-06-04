@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/kt3k/domaindoc.svg?style=svg)](https://circleci.com/gh/kt3k/domaindoc)
 [![codecov](https://codecov.io/gh/kt3k/domaindoc/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/domaindoc)
-[![domaindoc](https://img.shields.io/npm/v/domaindoc.svg)](https://npm.im/domaindoc)
+[![domaindoc](https://img.shields.io/npm/v/domaindoc.svg)](https://npm.im/domaindoc) [![Greenkeeper badge](https://badges.greenkeeper.io/kt3k/domaindoc.svg)](https://greenkeeper.io/)
 
 > Generate documentation site of domain models from markdown sources
 
