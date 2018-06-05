@@ -7,7 +7,7 @@ const path = require('path')
 const { join, dirname } = path
 const accumulate = require('vinyl-accumulate')
 const frontMatter = require('gulp-front-matter')
-const marked = require('gulp-marked')
+const gulpmd = require('gulp-markdown')
 const nunjucks = require('nunjucks')
 const through2 = require('through2')
 const trimlines = require('gulp-trimlines')
@@ -160,7 +160,7 @@ berber.on('config', config => {
   pipeline
     .pipe(gulpdata(getSource(mdSources)))
     .pipe(frontMatter({ property: 'fm' }))
-    .pipe(marked())
+    .pipe(gulpmd())
     .pipe(branch.obj(src => [
       src.pipe(accumulate(paths.output.index, { debounce: true })),
       src.pipe(accumulate.through({ debounce: true }))
