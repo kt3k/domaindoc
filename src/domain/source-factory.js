@@ -2,9 +2,25 @@ const { join } = require('path')
 const Source = require('./source')
 
 /**
- * @param {string|string[]|Object}
+ * The factory class of source model.
  */
-module.exports = source => {
+class SourceFactory {
+  /**
+   * @param {string|string[]|Object} option
+   * @return {Source[]}
+   */
+  createFromOption (option) {
+    return createFromOption(option)
+  }
+}
+
+module.exports = SourceFactory
+
+/**
+ * @param {string|string[]|Object}
+ * @return {Source[]}
+ */
+const createFromOption = source => {
   if (typeof source === 'string') {
     return [createSourceFromString(source, 0)]
   }

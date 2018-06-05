@@ -15,7 +15,7 @@ const branch = require('branch-pipe')
 const layout1 = require('layout1')
 const gulpdata = require('gulp-data')
 
-const createMdSource = require('./src/util/create-md-source')
+const { Source } = require('./src/domain')
 
 const defaultConfig = {
   logger: null,
@@ -150,7 +150,7 @@ berber.on('config', config => {
 
   const pipeline = asset().base(process.cwd())
 
-  const mdSources = createMdSource(config.source)
+  const mdSources = new Source.Factory().createFromOption(config.source)
 
   mdSources.forEach(mdSource => {
     pipeline.asset(mdSource.path)
