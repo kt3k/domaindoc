@@ -3,6 +3,10 @@
   "version": "2.7.4",
   "description": "Generate documentation site of domain models from .md sources",
   "main": "index.js",
+  "files": [
+    "cli.js",
+    "src"
+  ],
   "scripts": {
     "test": "kocha test",
     "cov": "nyc npm test",
