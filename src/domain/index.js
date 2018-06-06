@@ -1,4 +1,5 @@
-
-
 exports.Source = require('./source')
 exports.Source.Factory = require('./source-factory')
+exports.Model = require('./model')
+exports.Model.Factory = require('./model-factory')
+exports.ModelGroup = require('./model-group')
