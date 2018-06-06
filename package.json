@@ -11,8 +11,8 @@
     "test": "kocha test",
     "cov": "nyc npm test",
     "codecov": "npm run cov && codecov",
+    "doc": "./cli.js build",
     "lint": "standard",
-    "fix": "standard --fix",
     "precommit": "lint-staged"
   },
   "lint-staged": {

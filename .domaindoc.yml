@@ -1,3 +1,4 @@
 source: src/domain
+dest: docs
 title: The domain of domaindoc
 port: 11114
