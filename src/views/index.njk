@@ -5,31 +5,31 @@
 {% block content %}
 
 <div class="columns">
-{% for f in file.files %}
+{% for model in file.models.models %}
   <div class="column is-4">
     <div class="card">
-      {% if f.data.label %}
-        <header class="card-header" {% if f.data.color %}style="background-color: {{ f.data.color }}"{% endif %}>
+      {% if model.groupLabel %}
+        <header class="card-header" {% if model.groupColor %}style="background-color: {{ model.groupColor }}"{% endif %}>
           <p class="card-header-title">
-            {{ f.data.label }}
+            {{ model.groupLabel }}
           </p>
         </header>
       {% endif %}
       <header class="card-header">
         <p class="card-header-title">
-          {{ type.type(file.fileMap, f.fm.name, basepath(file), 'page', opts) }}
+          {{ type.type(file.models, model.name, basepath(file), 'page', opts) }}
         </p>
-        {{ cardHeaderIcon.edit(f.fm.edit) }}
-        {{ cardHeaderIcon.source(f.fm.src) }}
+        {{ cardHeaderIcon.edit(model.editUrl) }}
+        {{ cardHeaderIcon.source(model.sourceUrl) }}
       </header>
 
       <div class="card-content">
         <div class="content">
-          {% if f.fm.props and f.fm.props.length > 0 %}
-            {% for prop in f.fm.props %}
+          {% if model.properties and model.properties.length > 0 %}
+            {% for prop in model.properties %}
               <p>
                 <b>{{ prop.name }}</b>
-                <small>{{ type.type(file.fileMap, prop.type, basepath(file), 'page', opts) }}</small>
+                <small>{{ type.type(file.models, prop.type, basepath(file), 'page', opts) }}</small>
               </p>
             {% endfor %}
           {% endif %}
@@ -38,7 +38,7 @@
 
       <footer class="card-footer">
         <div class="card-footer-item">
-          {% if f.fm.desc %}{{ f.fm.desc }}{% endif %}
+          {% if model.description %}{{ model.description }}{% endif %}
         </div>
       </footer>
     </div>

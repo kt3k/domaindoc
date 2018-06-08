@@ -1,15 +1,15 @@
-{% macro type(fileMap, type, basepath, linktype, opts) -%}
+{% macro type(models, type, basepath, linktype, opts) -%}
   {%- for expr in opts.split(type) -%}
-    {{ typeRaw(fileMap, expr, basepath, linktype, opts) }}
+    {{ typeRaw(models, expr, basepath, linktype, opts) }}
   {%- endfor -%}
 {%- endmacro %}
 
-{% macro typeRaw(fileMap, type, basepath, linktype, opts) -%}
-  {%- if fileMap[type] -%}
+{% macro typeRaw(models, type, basepath, linktype, opts) -%}
+  {%- if models.getByName(type) -%}
     {%- if linktype === 'in-page' -%}
-      <a href="#{{ fileMap[type].fm.name }}">{{ type }}</a>
+      <a href="#{{ models.getByName(type).name }}">{{ type }}</a>
     {%- else -%}
-      <a href="{{ basepath }}/{{ fileMap[type].relative }}">{{ type }}</a>
+      <a href="{{ basepath }}/{{ models.getByName(type).path }}">{{ type }}</a>
     {%- endif -%}
   {%- else -%}
     {{ type }}
