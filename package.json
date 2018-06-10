@@ -1,6 +1,6 @@
 {
   "name": "domaindoc",
-  "version": "2.8.0",
+  "version": "2.8.1",
   "description": "Generate documentation site of domain models from .md sources",
   "main": "cli.js",
   "files": [
