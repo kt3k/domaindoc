@@ -26,7 +26,7 @@
 <div class="card">
   {% if file.data.label %}
     <header class="card-header" {% if file.data.color %}style="background-color: {{ file.data.color }}"{% endif %}>
-      <p class="card-header-title">
+      <p class="card-header-title" style="color: rgba(0,0,0,0.3);">
         {{ file.data.label }}
       </p>
     </header>
@@ -51,18 +51,21 @@
           {% endfor %}
         </table>
       {% endif %}
+      {% if file.contents.length > 0 %}
+        <hr />
+        {{ file.contents | safe }}
+      {% endif %}
+      <hr />
+      {% if file.owners.length %}
+        This model is owned by {{ file.owners.length }} model(s):
+        {% for parent in file.owners %}
+        {{ type.type(file.models, parent.name, basepath(file), 'page', opts) }}{% if loop.last %}.{% else %},{% endif %}
+        {% endfor %}
+      {% else %}
+        This model is not owned by any other model.
+      {% endif %}
     </div>
   </div>
-
-  {% if file.contents %}
-    <footer class="card-footer">
-      <div class="card-footer-item">
-        <div class="content">
-          {{ file.contents | safe }}
-        </div>
-      </div>
-    </footer>
-  {% endif %}
 </div>
 
 </div>

@@ -40,16 +40,31 @@ const getSource = mdSources => file =>
  * @return {Transform}
  */
 const sortFiles = () =>
-  through2.obj((file, enc, cb) => {
-    const files = (file.files = file.files.slice(0).sort((x, y) => {
+  through2.obj((file, _, cb) => {
+    file.files = file.files.slice(0).sort((x, y) => {
       if (x.data.index !== y.data.index) {
         return x.data.index - y.data.index
       }
 
       return x.fm.name > y.fm.name ? 1 : -1
-    }))
+    })
 
-    file.models = new Model.Factory().createCollectionFromFiles(files)
+    file.models = new Model.Factory().createCollectionFromFiles(file.files)
+
+    cb(null, file)
+  })
+
+const setOwners = () =>
+  through2.obj((file, _, cb) => {
+    if (!file.fm) {
+      return cb(null, file)
+    }
+
+    const model = file.models.getByName(file.fm.name)
+    file.owners = file.models.getOwners(model)
+
+    console.log(model)
+    console.log(file.owners)
 
     cb(null, file)
   })
@@ -146,6 +161,7 @@ berber.on('config', config => {
       ])
     )
     .pipe(sortFiles())
+    .pipe(setOwners())
     .pipe(
       layout1.nunjucks(
         file =>

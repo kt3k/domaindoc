@@ -19,6 +19,14 @@ class ModelCollection {
   }
 
   /**
+   * @param {Model}
+   * @return {Model[]}
+   */
+  getOwners (child) {
+    return this.models.filter(parent => parent.has(child))
+  }
+
+  /**
    * @param {string} name The name of the model
    */
   getByName (name) {

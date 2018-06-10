@@ -25,6 +25,15 @@ class Model {
     this.sourceUrl = sourceUrl
     this.editUrl = editUrl
   }
+
+  /**
+   * Returns true if this model has the given model as a property.
+   * @param {Model} model The model
+   * @return {boolean}
+   */
+  has (model) {
+    return this.properties.some(prop => prop.type === model.name)
+  }
 }
 
 module.exports = Model
