@@ -132,6 +132,7 @@ basepath: https://example.dom/domaindoc
 
 # History
 
+- 2017-06-10   v2.8.0   Show owners in document.
 - 2017-05-01   v2.5.0   Improve multiple documents.
 - 2017-05-01   v2.4.0   Multiple document roots.
 - 2017-04-30   v2.3.1   Fix watch.
