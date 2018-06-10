@@ -1,3 +1,5 @@
+const split = expr => expr.match(/[a-zA-Z0-9]+/g)
+
 class Model {
   /**
    * @param {string} name
@@ -32,7 +34,7 @@ class Model {
    * @return {boolean}
    */
   has (model) {
-    return this.properties.some(prop => prop.type === model.name)
+    return this.properties.some(prop => split(prop.type).includes(model.name))
   }
 }
 
