@@ -63,9 +63,6 @@ const setOwners = () =>
     const model = file.models.getByName(file.fm.name)
     file.owners = file.models.getOwners(model)
 
-    console.log(model)
-    console.log(file.owners)
-
     cb(null, file)
   })
 
