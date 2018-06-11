@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/kt3k/domaindoc.svg?style=svg)](https://circleci.com/gh/kt3k/domaindoc)
 [![codecov](https://codecov.io/gh/kt3k/domaindoc/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/domaindoc)
-[![domaindoc](https://img.shields.io/npm/v/domaindoc.svg)](https://npm.im/domaindoc) [![Greenkeeper badge](https://badges.greenkeeper.io/kt3k/domaindoc.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/kt3k/domaindoc.svg)](https://greenkeeper.io/)
 
 > Generate documentation site of domain models from markdown sources
 
@@ -18,7 +18,7 @@ Then write markdown files for models like the below:
 
 (source/user.md):
 
-```
+````markdown
 ---
 name: User
 desc: The user model
@@ -32,11 +32,11 @@ props:
 ---
 
 User represents an user account in the service.
-```
+````
 
 (source/item.md):
 
-```
+````markdown
 ---
 name: Item
 desc: The item model
@@ -50,20 +50,22 @@ props:
 ---
 
 Item represents the item in the service. An user has 0 or more items.
-```
+````
 
 Then run the command `domaindoc serve` like the below:
 
-    $ ./node_modules/.bin/domaindoc serve
-    domaindoc [01:18:38] serving
-    domaindoc [01:18:38] Reading: source/**/*.md
-    domaindoc [01:18:38] Reading: source/**/*.md
-    domaindoc [01:18:38] Reading: source/**/*.css
-    domaindoc [01:18:38] Server started at: http://0.0.0.0:8011/
-    domaindoc [01:18:38] See debug info at: http://0.0.0.0:8011/__domaindoc__
-    domaindoc [01:18:38] Ready: source/**/*.css
-    domaindoc [01:18:38] Ready: source/**/*.md
-    domaindoc [01:18:38] Ready: source/**/*.md
+```console
+$ ./node_modules/.bin/domaindoc serve
+domaindoc [01:18:38] serving
+domaindoc [01:18:38] Reading: source/**/*.md
+domaindoc [01:18:38] Reading: source/**/*.md
+domaindoc [01:18:38] Reading: source/**/*.css
+domaindoc [01:18:38] Server started at: http://0.0.0.0:8011/
+domaindoc [01:18:38] See debug info at: http://0.0.0.0:8011/__domaindoc__
+domaindoc [01:18:38] Ready: source/**/*.css
+domaindoc [01:18:38] Ready: source/**/*.md
+domaindoc [01:18:38] Ready: source/**/*.md
+```
 
 Then access http://0.0.0.0:8011/index.html and you'll be seeing the documentation site:
 
