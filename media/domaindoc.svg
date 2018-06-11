@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="296px" height="298px" viewBox="0 0 296 298" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
     <title>domaindoc</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Artboard" transform="translate(-174.000000, -155.000000)" stroke="#000000" stroke-width="20">
-            <g id="domaindoc" transform="translate(327.500000, 301.000000) rotate(17.000000) translate(-327.500000, -301.000000) translate(189.000000, 165.000000)">
-                <ellipse id="Oval" cx="119" cy="154" rx="119" ry="118"></ellipse>
-                <ellipse id="Oval" cx="137" cy="118" rx="119" ry="118"></ellipse>
-                <ellipse id="Oval" cx="158" cy="154" rx="119" ry="118"></ellipse>
+        <g id="Artboard" transform="translate(-296.000000, -42.000000)">
+            <g id="domaindoc" transform="translate(296.000000, 42.000000)">
+                <path d="M100,200 L100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 Z" id="Oval" fill="#062A38"></path>
+                <path d="M100,200 L100,0 C155.228475,0 200,44.771525 200,100 C200,155.228475 155.228475,200 100,200 Z" id="Oval" fill="#149DD3"></path>
+                <path d="M100,30 L100,170 C138.659932,170 170,138.659932 170,100 C170,61.3400675 138.659932,30 100,30 Z" id="Oval" fill="#062A38"></path>
+                <path d="M100,170 L100,30 C61.3400675,30 30,61.3400675 30,100 C30,138.659932 61.3400675,170 100,170 Z" id="Oval" fill="#149DD3"></path>
+                <circle id="Oval" fill="#FFFFFF" cx="100" cy="100" r="40"></circle>
             </g>
         </g>
     </g>
