@@ -1,6 +1,8 @@
 ---
 name: Model
 desc: Model represents the domain model of the domain
+src: https://github.com/kt3k/domaindoc/blob/master/src/domain/model.js
+edit: https://github.com/kt3k/domaindoc/edit/master/src/domain/model.md
 props:
 - name: name
   type: string

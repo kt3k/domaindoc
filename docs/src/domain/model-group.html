@@ -3,7 +3,7 @@
 
 <html>
   <head>
-    <title>Source | The domain of domaindoc</title>
+    <title>ModelGroup | The domain of domaindoc</title>
     <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="../../asset/fontawesome/css/font-awesome.css" />
@@ -53,17 +53,17 @@
 
   <header class="card-header">
     <div class="card-header-title">
-      Source
+      ModelGroup
     </div>
 
 
-    <a class="card-header-icon" href="https://github.com/kt3k/domaindoc/edit/master/src/domain/source.md" target="_blank">
+    <a class="card-header-icon" href="https://github.com/kt3k/domaindoc/edit/master/src/domain/model-group.md" target="_blank">
       <span class="icon"><i class="fa fa-pencil"></i></span>
     </a>
 
 
 
-    <a class="card-header-icon" href="https://github.com/kt3k/domaindoc/blob/master/src/domain/source.js" target="_blank">
+    <a class="card-header-icon" href="https://github.com/kt3k/domaindoc/blob/master/src/domain/model-group.js" target="_blank">
       <span class="icon"><i class="fa fa-code"></i></span>
     </a>
 
@@ -71,21 +71,17 @@
 
   <div class="card-content">
     <div class="content">
-      <p>Source represents the source directory of domain documents</p>
+      <p>ModelGroup represents the group of model.</p>
 
 
         <table class="table">
           <tr><th>property<th>type<th>description
 
-            <tr><td>source<td>string<td>The directory of the source
+            <tr><td>label<td>string<td>The label of the group
 
-            <tr><td>path<td>string<td>The glob pattern to .md files under the source
+            <tr><td>color<td>string<td>The color of the group
 
-            <tr><td>watchPath<td>string<td>The watch global pattern
-
-            <tr><td>color<td>string<td>The color of the source
-
-            <tr><td>index<td>number<td>The index number of the source
+            <tr><td>models<td><a href="../../src/domain/model.html">Model</a>[]<td>The models which belong the group
 
         </table>
 
