@@ -1,5 +1,6 @@
 ---
 name: Source
+type: ValueObject
 desc: Source represents the source directory of domain documents
 src: https://github.com/kt3k/domaindoc/blob/master/src/domain/source.js
 edit: https://github.com/kt3k/domaindoc/edit/master/src/domain/source.md
