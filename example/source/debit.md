@@ -1,5 +1,6 @@
 ---
 name: Debit
+type: ValueObject
 parent: Account
 desc: The debit of a trade
 src: https://github.com/kt3k/moneybit/blob/master/packages/moneybit-domain/debit.js
@@ -14,4 +15,10 @@ props:
 - name: amount
   type: Money
   desc: The amount of the debit
+- name: description
+  type: string
+  desc: The description of the debit
+- name: trade
+  type: Trade
+  desc: The trade which the debit belongs
 ---

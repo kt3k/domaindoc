@@ -1,5 +1,6 @@
 ---
 name: Currency
+type: ValueObject
 desc: The currency
 src: https://github.com/kt3k/moneybit-app/blob/master/src/domain/currency.js
 edit: https://github.com/kt3k/moneybit-app/blob/master/src/domain/currency.md

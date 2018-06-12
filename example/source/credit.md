@@ -1,5 +1,6 @@
 ---
 name: Credit
+type: ValueObject
 parent: Account
 desc: The credit of a trade
 src: https://github.com/kt3k/moneybit/blob/master/packages/moneybit-domain/credit.js
@@ -14,4 +15,10 @@ props:
 - name: amount
   type: Money
   desc: The amount of the credit
+- name: description
+  type: string
+  desc: The description of the credit
+- name: trade
+  type: Trade
+  desc: The trade which the credit belongs
 ---

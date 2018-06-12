@@ -1,5 +1,6 @@
 ---
 name: Account
+type: ValueObject
 desc: Account represents a debit or credit in a trade.
 src: https://github.com/kt3k/moneybit/blob/master/packages/moneybit-domain/account.js
 edit: https://github.com/kt3k/moneybit/blob/master/packages/moneybit-domain/account.md
@@ -13,6 +14,12 @@ props:
 - name: amount
   type: Money
   desc: The amount of the account
+- name: description
+  type: string
+  desc: The description of the account
+- name: trade
+  type: Trade
+  desc: The trade which the account belongs
 ---
 
 Account represents a debit or credit in a trade.
