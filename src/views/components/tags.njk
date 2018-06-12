@@ -1,0 +1,30 @@
+{% macro tags(model) -%}
+<div class="field is-grouped is-grouped-multiline">
+  {% if model.groupLabel %}
+  <div class="control">
+    <div class="tags has-addons">
+      <span class="tag is-dark">Group</span>
+      <span class="tag is-primary">{{ model.groupLabel }}</span>
+    </div>
+  </div>
+  {% endif %}
+  {% if model.type %}
+  <div class="control">
+    <div class="tags has-addons">
+      <span class="tag is-dark">Type</span>
+      <span class="tag is-info">{{ model.type }}</span>
+    </div>
+  </div>
+  {% endif %}
+  {% if model.owners.length == 0 %}
+  <div class="control">
+    <span class="tag is-info">⛰ Independent</span>
+  </div>
+  {% endif %}
+  {% for label in model.labels %}
+  <div class="control">
+    <span class="tag is-info">🔖 {{ label }}</span>
+  </div>
+  {% endfor %}
+</div>
+{%- endmacro %}

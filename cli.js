@@ -51,17 +51,18 @@ const sortFiles = () =>
 
     file.models = new Model.Factory().createCollectionFromFiles(file.files)
 
+    if (file.fm) {
+      file.model = file.models.getByName(file.fm.name)
+    }
+
     cb(null, file)
   })
 
 const setOwners = () =>
   through2.obj((file, _, cb) => {
-    if (!file.fm) {
-      return cb(null, file)
+    if (file.model) {
+      file.owners = file.models.getOwners(file.model)
     }
-
-    const model = file.models.getByName(file.fm.name)
-    file.owners = file.models.getOwners(model)
 
     cb(null, file)
   })

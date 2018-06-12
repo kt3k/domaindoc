@@ -8,13 +8,6 @@
 {% for model in file.models.models %}
   <div class="column is-4">
     <div class="card">
-      {% if model.groupLabel %}
-        <header class="card-header" {% if model.groupColor %}style="background-color: {{ model.groupColor }}"{% endif %}>
-          <p class="card-header-title" style="color: rgba(0,0,0,0.3);">
-            {{ model.groupLabel }}
-          </p>
-        </header>
-      {% endif %}
       <header class="card-header">
         <p class="card-header-title">
           {{ type.type(file.models, model.name, basepath(file), 'page', opts) }}
@@ -24,6 +17,7 @@
       </header>
 
       <div class="card-content">
+        {{ tags.tags(model) }}
         <div class="content">
           {% if model.properties and model.properties.length > 0 %}
             {% for prop in model.properties %}

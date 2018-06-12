@@ -11,3 +11,5 @@ props:
   type: MajorAccountType
   desc: The major account type of the account type
 ---
+
+The type of account.

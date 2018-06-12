@@ -6,24 +6,43 @@ class ModelFactory {
    * @param {Vinyl[]} files The vinyl files
    */
   createCollectionFromFiles (files) {
-    return new ModelCollection(files.map(file => this.createFromFile(file)))
+    const models = new ModelCollection(
+      files.map(file => this.createFromFile(file))
+    )
+
+    models.models.forEach(model =>
+      Object.assign(model, { owners: models.getOwners(model) })
+    )
+
+    return models
   }
 
   /**
-   * @param {Vinyl} file
+   * @param {Vinyl} file The input file
+   * @return {Model}
    */
   createFromFile (file) {
-    return new Model({
-      name: file.fm.name,
+    const fm = file.fm
+    const data = file.data
+
+    const model = new Model({
+      name: fm.name,
+      type: fm.type,
+      labels: fm.labels || [],
       path: file.relative,
-      aliases: file.fm.alias,
-      groupLabel: file.data.label,
-      groupColor: file.data.color,
-      description: file.fm.desc,
-      properties: file.fm.props,
-      sourceUrl: file.fm.source,
-      editUrl: file.fm.edit
+      aliases: fm.alias || [],
+      groupLabel: data.label,
+      groupColor: data.color,
+      description: fm.desc,
+      properties: fm.props || [],
+      sourceUrl: fm.source,
+      editUrl: fm.edit,
+      notes: file.contents
     })
+
+    file.model = model
+
+    return model
   }
 }
 

@@ -83,12 +83,15 @@ And then you get html documentation files in `build/` directory.
 
 You can use properties in YAML front matter in the markdown sources.
 
-name  | type       | description
-------|------------|---------
-name  | string     | The name of the domain model (required)
-desc  | string     | The description of the domain model (required)
-src   | string     | The url of the source code of the model (optional)
-props | Property[] | The properties of the domain model (optional)
+name   | type       | description
+-------|------------|---------
+name   | string     | The name of the model (required)
+type   | string     | The type of the model. e.g. Entity, ValueObject etc
+labels | string[]  | The arbitrary labels of the model
+desc   | string     | The description of the model (required)
+src    | string     | The url of the source code of the model (optional)
+edit   | string     | The url of the edit page of the model document
+props  | Property[] | The properties of the model (optional)
 
 Each *Property* object has the following properties in it.
 

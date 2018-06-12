@@ -1,6 +1,6 @@
 {% extends viewDir + "/layout.njk" %}
 
-{% block title %}{{ file.fm.name }} | {{ title }}{% endblock %}
+{% block title %}{{ file.model.name }} | {{ title }}{% endblock %}
 
 {% block content %}
 <div class="columns">
@@ -24,29 +24,24 @@
 <div class="section">
 
 <div class="card">
-  {% if file.data.label %}
-    <header class="card-header" {% if file.data.color %}style="background-color: {{ file.data.color }}"{% endif %}>
-      <p class="card-header-title" style="color: rgba(0,0,0,0.3);">
-        {{ file.data.label }}
-      </p>
-    </header>
-  {% endif %}
   <header class="card-header">
     <div class="card-header-title">
-      {{ file.fm.name }}
+      {{ file.model.name }}
     </div>
-    {{ cardHeaderIcon.edit(file.fm.edit) }}
-    {{ cardHeaderIcon.source(file.fm.src) }}
+    {{ cardHeaderIcon.edit(file.model.editUrl) }}
+    {{ cardHeaderIcon.source(file.model.sourceUrl) }}
   </header>
 
   <div class="card-content">
+    {{ tags.tags(file.model) }}
     <div class="content">
-      {% if file.fm.desc %}<p>{{ file.fm.desc }}</p>{% endif %}
+      </div>
+      {% if file.model.description %}<p>{{ file.model.description}}</p>{% endif %}
 
-      {% if file.fm.props and file.fm.props.length > 0 %}
+      {% if file.model.properties and file.model.properties.length > 0 %}
         <table class="table">
           <tr><th>property<th>type<th>description
-          {% for prop in file.fm.props %}
+          {% for prop in file.model.properties %}
             <tr><td>{{ prop.name }}<td>{{ type.type(file.models, prop.type, basepath(file), 'page', opts) }}<td>{{ prop.desc }}
           {% endfor %}
         </table>
@@ -56,9 +51,9 @@
         {{ file.contents | safe }}
       {% endif %}
       <hr />
-      {% if file.owners.length %}
-        This model is owned by {{ file.owners.length }} model(s):
-        {% for parent in file.owners %}
+      {% if file.model.owners.length %}
+        This model is owned by {{ file.model.owners.length }} model(s):
+        {% for parent in file.model.owners %}
         {{ type.type(file.models, parent.name, basepath(file), 'page', opts) }}{% if loop.last %}.{% else %},{% endif %}
         {% endfor %}
       {% else %}

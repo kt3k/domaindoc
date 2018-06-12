@@ -8,6 +8,8 @@ class Model {
    */
   constructor ({
     name,
+    type,
+    labels,
     path,
     aliases,
     groupLabel,
@@ -15,9 +17,12 @@ class Model {
     description,
     properties,
     sourceUrl,
-    editUrl
+    editUrl,
+    notes
   }) {
     this.name = name
+    this.type = type
+    this.labels = labels
     this.path = path
     this.aliases = aliases
     this.groupLabel = groupLabel
@@ -26,6 +31,7 @@ class Model {
     this.properties = properties
     this.sourceUrl = sourceUrl
     this.editUrl = editUrl
+    this.notes = notes
   }
 
   /**

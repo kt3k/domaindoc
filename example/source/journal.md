@@ -1,5 +1,8 @@
 ---
 name: Journal
+type: Entity
+labels:
+  - AggregateRoot
 desc: Journal is a series of trades.
 src: https://github.com/kt3k/moneybit/blob/master/packages/moneybit-domain/journal.js
 edit: https://github.com/kt3k/moneybit/blob/master/packages/moneybit-domain/journal.md
