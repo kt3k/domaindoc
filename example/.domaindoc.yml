@@ -1,5 +1,5 @@
 port: 9012
-title: demo
+title: Demo of domaindoc
 loggerTitle: demo
 source:
   source:

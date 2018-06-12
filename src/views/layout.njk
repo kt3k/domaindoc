@@ -7,11 +7,14 @@
     {% include viewDir + "/components/head.njk" %}
   </head>
   <body>
-    <nav class="nav">
-      <div class="nav-center">
-        <div class="nav-item">
-          <a href="{{ basepath(file) }}/index.html">{{ title }}</a>
-        </div>
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="{{ basepath(file) }}/">
+          <img src="{{ basepath(file) }}/asset/domaindoc.svg" />
+        </a>
+      </div>
+      <div class="navbar-start">
+        <a class="navbar-item" href="{{ basepath(file) }}/">{{ title }}</a>
       </div>
     </nav>
 
