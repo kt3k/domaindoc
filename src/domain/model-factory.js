@@ -35,7 +35,7 @@ class ModelFactory {
       groupColor: data.color,
       description: fm.desc,
       properties: fm.props || [],
-      sourceUrl: fm.source,
+      sourceUrl: fm.src,
       editUrl: fm.edit,
       notes: file.contents
     })
