@@ -1,16 +1,12 @@
-{% macro type(models, type, basepath, linktype, opts) -%}
+{% macro type(models, type, basepath, opts) -%}
   {%- for expr in opts.split(type) -%}
     {{ typeRaw(models, expr, basepath, linktype, opts) }}
   {%- endfor -%}
 {%- endmacro %}
 
-{% macro typeRaw(models, type, basepath, linktype, opts) -%}
+{% macro typeRaw(models, type, basepath, opts) -%}
   {%- if models.getByName(type) -%}
-    {%- if linktype === 'in-page' -%}
-      <a href="#{{ models.getByName(type).name }}">{{ type }}</a>
-    {%- else -%}
-      <a href="{{ basepath }}/{{ models.getByName(type).path }}">{{ type }}</a>
-    {%- endif -%}
+    <a href="{{ basepath }}/{{ models.getByName(type).path }}">{{ type }}</a>
   {%- else -%}
     {{ type }}
   {%- endif -%}

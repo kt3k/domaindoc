@@ -11,7 +11,7 @@
     <p class="menu-label">{{ group.label }}</p>
     <ul class="menu-list">
     {% for model in group.models %}
-      <li><span class="nav-item">{{ type.type(file.models, model.name, basepath(file), 'page', opts) }}</span>
+      <li><span class="nav-item">{{ type.type(file.models, model.name, basepath(file), opts) }}</span>
     {% endfor %}
     </ul>
   {% endfor %}
@@ -42,7 +42,7 @@
         <table class="table">
           <tr><th>property<th>type<th>description
           {% for prop in file.model.properties %}
-            <tr><td>{{ prop.name }}<td>{{ type.type(file.models, prop.type, basepath(file), 'page', opts) }}<td>{{ prop.desc }}
+            <tr><td>{{ prop.name }}<td>{{ type.type(file.models, prop.type, basepath(file), opts) }}<td>{{ prop.desc }}
           {% endfor %}
         </table>
       {% endif %}
@@ -54,7 +54,7 @@
       {% if file.model.owners.length %}
         This model is owned by {{ file.model.owners.length }} model(s):
         {% for parent in file.model.owners %}
-        {{ type.type(file.models, parent.name, basepath(file), 'page', opts) }}{% if loop.last %}.{% else %},{% endif %}
+        {{ type.type(file.models, parent.name, basepath(file), opts) }}{% if loop.last %}.{% else %},{% endif %}
         {% endfor %}
       {% else %}
         This model is not owned by any other model.
