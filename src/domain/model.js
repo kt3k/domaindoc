@@ -15,6 +15,7 @@ class Model {
     aliases,
     groupLabel,
     groupColor,
+    groupIndex,
     description,
     properties,
     sourceUrl,
@@ -28,6 +29,7 @@ class Model {
     this.aliases = aliases
     this.groupLabel = groupLabel
     this.groupColor = groupColor
+    this.groupIndex = groupIndex
     this.description = description
     this.properties = properties
     this.sourceUrl = sourceUrl
@@ -56,6 +58,18 @@ class Model {
    */
   basepath () {
     return dirname(relative(this.path, ''))
+  }
+
+  /**
+   * @param {Model} that
+   * @return {number}
+   */
+  compare (that) {
+    if (this.groupIndex !== that.groupIndex) {
+      return this.groupIndex - that.groupIndex
+    }
+
+    return this.name > that.name ? 1 : this.name < that.name ? -1 : 0
   }
 }
 

@@ -14,6 +14,7 @@ const branch = require('branch-pipe')
 const layout1 = require('layout1')
 const gulpdata = require('gulp-data')
 
+const pkg = require('./package')
 const { Source, Model } = require('./src/domain')
 
 const defaultConfig = {
@@ -40,14 +41,6 @@ const getSource = mdSources => file =>
  */
 const sortFiles = () =>
   through2.obj((file, _, cb) => {
-    file.files = file.files.slice(0).sort((x, y) => {
-      if (x.data.index !== y.data.index) {
-        return x.data.index - y.data.index
-      }
-
-      return x.fm.name > y.fm.name ? 1 : -1
-    })
-
     file.models = new Model.Factory().createCollectionFromFiles(file.files)
 
     if (file.fm) {
@@ -85,15 +78,12 @@ berber.on('config', config => {
     dest: config.dest
   }
 
-  const pkg = require('./package')
-
   const data = {
     title,
     pkg,
     viewDir: paths.layout.root,
     basepath: file => (file.model ? file.model.basepath() : '.')
   }
-  data.opts = data
 
   nunjucks.configure(paths.layout.root)
 

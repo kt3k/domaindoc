@@ -17,6 +17,16 @@ class ModelCollection {
     })
   }
 
+  /**
+   * Sorts the models.
+   */
+  sort () {
+    this.models.sort((x, y) => x.compare(y))
+    Object.keys(this.groups).forEach(key => {
+      this.groups[key].models.sort((x, y) => x.compare(y))
+    })
+  }
+
   getGroups () {
     return Object.keys(this.groups).map(label => this.groups[label])
   }

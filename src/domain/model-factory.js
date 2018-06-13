@@ -14,6 +14,8 @@ class ModelFactory {
       Object.assign(model, { owners: models.getOwners(model) })
     )
 
+    models.sort()
+
     return models
   }
 
@@ -33,6 +35,7 @@ class ModelFactory {
       aliases: fm.alias || [],
       groupLabel: data.label,
       groupColor: data.color,
+      groupIndex: data.index,
       description: fm.desc,
       properties: fm.props || [],
       sourceUrl: fm.src,
