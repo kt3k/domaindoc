@@ -1,4 +1,7 @@
 const ModelGroup = require('./model-group')
+const nunjucks = require('nunjucks')
+const split = expr => expr.match(/[a-zA-Z0-9]+|[^a-zA-Z0-9]+/g)
+const escapeHtml = require('escape-html')
 
 class ModelCollection {
   /**
@@ -56,6 +59,28 @@ class ModelCollection {
     }
 
     this.groups[model.groupLabel].add(model)
+  }
+
+  /**
+   * @param {string} text
+   * @param {string} basepath
+   * @param {string} tmpl nunjucks template
+   */
+  linkType (text, basepath, tmpl) {
+    return split(text)
+      .map(expr => {
+        const model = this.getByName(expr)
+
+        if (!model) {
+          return escapeHtml(expr)
+        }
+
+        return nunjucks.renderString(tmpl, {
+          href: model.getHref(basepath),
+          type: expr
+        })
+      })
+      .join('')
   }
 }
 

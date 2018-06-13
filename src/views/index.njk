@@ -10,7 +10,7 @@
     <div class="card">
       <header class="card-header">
         <p class="card-header-title">
-          {{ type.type(file.models, model.name, basepath(file), opts) }}
+          {{ type.type(file.models, model.name, ".") }}
         </p>
         {{ cardHeaderIcon.edit(model.editUrl) }}
         {{ cardHeaderIcon.source(model.sourceUrl) }}
@@ -23,7 +23,7 @@
             {% for prop in model.properties %}
               <p>
                 <b>{{ prop.name }}</b>
-                <small>{{ type.type(file.models, prop.type, basepath(file), opts) }}</small>
+                <small>{{ type.type(file.models, prop.type, ".") }}</small>
               </p>
             {% endfor %}
           {% endif %}

@@ -3,8 +3,7 @@
 const berber = require('berber')
 const { asset } = berber
 
-const path = require('path')
-const { join, dirname } = path
+const { join } = require('path')
 const accumulate = require('vinyl-accumulate')
 const frontMatter = require('gulp-front-matter')
 const gulpmd = require('gulp-markdown')
@@ -58,17 +57,6 @@ const sortFiles = () =>
     cb(null, file)
   })
 
-/**
- * Splits the string into alnum only or non-alnum only parts.
- */
-const split = expr => expr.match(/[a-zA-Z0-9]+|[^a-zA-Z0-9]+/g)
-
-/**
- * Returns true if obj has any truthy value for any of arr's key names.
- * @return {boolean}
- */
-const hasKey = (obj, arr) => arr.filter(key => obj[key]).length > 0
-
 berber.name('domaindoc')
 berber.configName('.domaindoc')
 
@@ -98,25 +86,12 @@ berber.on('config', config => {
   }
 
   const pkg = require('./package')
-  const basepath = file => {
-    if (process.env.BASEPATH) {
-      return process.env.BASEPATH
-    }
-
-    if (config.basepath) {
-      return config.basepath
-    }
-
-    return dirname(path.relative(file.relative, ''))
-  }
 
   const data = {
     title,
     pkg,
     viewDir: paths.layout.root,
-    basepath,
-    split,
-    hasKey
+    basepath: file => (file.model ? file.model.basepath() : '.')
   }
   data.opts = data
 

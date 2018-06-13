@@ -43,6 +43,7 @@
   "dependencies": {
     "berber": "^1.1.1",
     "branch-pipe": "^1.0.1",
+    "escape-html": "^1.0.3",
     "gulp-consolidate": "^0.2.0",
     "gulp-data": "^1.2.1",
     "gulp-front-matter": "^1.3.0",
@@ -58,9 +59,9 @@
     "codecov": "^3.0.2",
     "husky": "^0.14.3",
     "kocha": "^1.9.1",
-    "lint-staged": "^7.1.3",
+    "lint-staged": "^7.2.0",
     "nyc": "^12.0.1",
-    "prettier": "^1.13.4",
+    "prettier": "^1.13.5",
     "standard": "^11.0.1"
   },
   "nyc": {

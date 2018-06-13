@@ -1,13 +1,3 @@
-{% macro type(models, type, basepath, opts) -%}
-  {%- for expr in opts.split(type) -%}
-    {{ typeRaw(models, expr, basepath, linktype, opts) }}
-  {%- endfor -%}
-{%- endmacro %}
-
-{% macro typeRaw(models, type, basepath, opts) -%}
-  {%- if models.getByName(type) -%}
-    <a href="{{ basepath }}/{{ models.getByName(type).path }}">{{ type }}</a>
-  {%- else -%}
-    {{ type }}
-  {%- endif -%}
+{% macro type(models, text, basepath) -%}
+  {{ models.linkType(text, basepath, '<a href="{{ href }}">{{ type }}</a>') | safe }}
 {%- endmacro %}

@@ -11,7 +11,7 @@
     <p class="menu-label">{{ group.label }}</p>
     <ul class="menu-list">
     {% for model in group.models %}
-      <li><span class="nav-item">{{ type.type(file.models, model.name, basepath(file), opts) }}</span>
+      <li><span class="nav-item">{{ type.type(file.models, model.name, file.model.basepath()) }}</span>
     {% endfor %}
     </ul>
   {% endfor %}
@@ -42,7 +42,7 @@
         <table class="table">
           <tr><th>property<th>type<th>description
           {% for prop in file.model.properties %}
-            <tr><td>{{ prop.name }}<td>{{ type.type(file.models, prop.type, basepath(file), opts) }}<td>{{ prop.desc }}
+            <tr><td>{{ prop.name }}<td>{{ type.type(file.models, prop.type, file.model.basepath()) }}<td>{{ prop.desc }}
           {% endfor %}
         </table>
       {% endif %}

@@ -1,4 +1,5 @@
 const split = expr => expr.match(/[a-zA-Z0-9]+/g)
+const { dirname, relative } = require('path')
 
 class Model {
   /**
@@ -41,6 +42,20 @@ class Model {
    */
   has (model) {
     return this.properties.some(prop => split(prop.type).includes(model.name))
+  }
+
+  /**
+   * @param {string} basepath
+   */
+  getHref (basepath) {
+    return `${basepath}/${this.path}`
+  }
+
+  /**
+   * Gets the basepath relative from this model
+   */
+  basepath () {
+    return dirname(relative(this.path, ''))
   }
 }
 
