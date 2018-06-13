@@ -35,29 +35,26 @@ const defaultConfig = {
 const getSource = mdSources => file =>
   mdSources.find(source => source.isMatch(file.relative))
 
+const map = mapper => () =>
+  through2.obj(function (file, _, cb) {
+    ;[].concat(mapper(file)).forEach(item => {
+      this.push(item)
+    })
+    cb(null)
+  })
+
 /**
  * @return {Transform}
  */
-const generateModels = () =>
-  through2.obj((file, _, cb) => {
-    const models = new Model.Factory().createCollectionFromFiles(file.files)
-
-    file.models = models
-    file.files.forEach(file => {
-      file.models = models
-    })
-
-    cb(null, file)
+const createModels = map(file =>
+  Object.assign(file, {
+    models: new Model.Factory().createCollectionFromFiles(file.files)
   })
+)
 
-const multiplex = () =>
-  through2.obj(function ({ files }, _, cb) {
-    files.forEach(file => {
-      this.push(file)
-    })
-
-    cb(null)
-  })
+const multiplex = map(({ files, models }) =>
+  files.map(file => Object.assign(file, { models }))
+)
 
 berber.name('domaindoc')
 berber.configName('.domaindoc')
@@ -118,7 +115,7 @@ berber.on('config', config => {
     .pipe(frontMatter({ property: 'fm' }))
     .pipe(gulpmd())
     .pipe(accumulate(paths.output.index, { debounce: true }))
-    .pipe(generateModels())
+    .pipe(createModels())
     .pipe(
       branch.obj(src => [
         // index page
