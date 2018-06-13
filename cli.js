@@ -36,18 +36,27 @@ const getSource = mdSources => file =>
   mdSources.find(source => source.isMatch(file.relative))
 
 /**
- * Sorts files and creates file mapping according to alias prop in frontmatters.
  * @return {Transform}
  */
-const sortFiles = () =>
+const generateModels = () =>
   through2.obj((file, _, cb) => {
-    file.models = new Model.Factory().createCollectionFromFiles(file.files)
+    const models = new Model.Factory().createCollectionFromFiles(file.files)
 
-    if (file.fm) {
-      file.model = file.models.getByName(file.fm.name)
-    }
+    file.models = models
+    file.files.forEach(file => {
+      file.models = models
+    })
 
     cb(null, file)
+  })
+
+const multiplex = () =>
+  through2.obj(function ({ files }, _, cb) {
+    files.forEach(file => {
+      this.push(file)
+    })
+
+    cb(null)
   })
 
 berber.name('domaindoc')
@@ -108,17 +117,15 @@ berber.on('config', config => {
     .pipe(gulpdata(getSource(mdSources)))
     .pipe(frontMatter({ property: 'fm' }))
     .pipe(gulpmd())
+    .pipe(accumulate(paths.output.index, { debounce: true }))
+    .pipe(generateModels())
     .pipe(
       branch.obj(src => [
         // index page
-        src
-          .pipe(accumulate(paths.output.index, { debounce: true }))
-          .pipe(sortFiles())
-          .pipe(layout1.nunjucks(paths.layout.index, { data })),
+        src.pipe(layout1.nunjucks(paths.layout.index, { data })),
         // each model page
         src
-          .pipe(accumulate.through({ debounce: true }))
-          .pipe(sortFiles())
+          .pipe(multiplex())
           .pipe(layout1.nunjucks(paths.layout.page, { data }))
       ])
     )
