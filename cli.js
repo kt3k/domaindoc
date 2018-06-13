@@ -58,15 +58,6 @@ const sortFiles = () =>
     cb(null, file)
   })
 
-const setOwners = () =>
-  through2.obj((file, _, cb) => {
-    if (file.model) {
-      file.owners = file.models.getOwners(file.model)
-    }
-
-    cb(null, file)
-  })
-
 /**
  * Splits the string into alnum only or non-alnum only parts.
  */
@@ -154,20 +145,17 @@ berber.on('config', config => {
     .pipe(gulpmd())
     .pipe(
       branch.obj(src => [
-        src.pipe(accumulate(paths.output.index, { debounce: true })),
-        src.pipe(accumulate.through({ debounce: true }))
+        // index page
+        src
+          .pipe(accumulate(paths.output.index, { debounce: true }))
+          .pipe(sortFiles())
+          .pipe(layout1.nunjucks(paths.layout.index, { data })),
+        // each model page
+        src
+          .pipe(accumulate.through({ debounce: true }))
+          .pipe(sortFiles())
+          .pipe(layout1.nunjucks(paths.layout.page, { data }))
       ])
-    )
-    .pipe(sortFiles())
-    .pipe(setOwners())
-    .pipe(
-      layout1.nunjucks(
-        file =>
-          file.relative === paths.output.index
-            ? paths.layout.index
-            : paths.layout.page,
-        { data }
-      )
     )
     .pipe(trimlines({ leading: false }))
 })
