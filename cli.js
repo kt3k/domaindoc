@@ -53,7 +53,7 @@ const createModels = map(file =>
 )
 
 const multiplex = map(({ files, models }) =>
-  files.map(file => Object.assign(file, { models }))
+  files.map(file => Object.assign(file.clone(), { models }))
 )
 
 berber.name('domaindoc')
