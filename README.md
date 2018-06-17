@@ -4,17 +4,25 @@
 [![codecov](https://codecov.io/gh/kt3k/domaindoc/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/domaindoc)
 [![Greenkeeper badge](https://badges.greenkeeper.io/kt3k/domaindoc.svg)](https://greenkeeper.io/)
 
-> Generate documentation site of domain models from markdown sources
+> :ocean: Static site generator for Domain Models
 
-`domaindoc` is a command line tool for creating documentation site of your domain models using markdown files.
+`domaindoc` is a JavaScript CLI tool for creating documentation site of your domain models using markdown and yaml syntax.
 
 # Getting Started
 
-First install it via npm:
+First you need [Node.js](https://nodejs.org/en/).
 
-    npm install domaindoc
+Then install it via npm:
+
+    npm install -g domaindoc
 
 Then write markdown files for models like the below:
+
+```
+source/
+├── user.md
+└── item.md
+```
 
 (source/user.md):
 
@@ -55,7 +63,7 @@ Item represents the item in the service. An user has 0 or more items.
 Then run the command `domaindoc serve` like the below:
 
 ```console
-$ ./node_modules/.bin/domaindoc serve
+$ domaindoc serve
 domaindoc [01:18:38] serving
 domaindoc [01:18:38] Reading: source/**/*.md
 domaindoc [01:18:38] Reading: source/**/*.md
@@ -73,7 +81,7 @@ Then access http://0.0.0.0:8011/index.html and you'll be seeing the documentatio
 
 And when you finish modifying the source files, then hit the command `domaindoc build` like the below:
 
-    $ ./node_modules/.bin/domaindoc build
+    $ domaindoc build
     domaindoc [20:31:14] building
     domaindoc [20:31:14] done
 
