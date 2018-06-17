@@ -77,6 +77,8 @@ domaindoc [01:18:38] Ready: source/**/*.md
 
 Then access http://0.0.0.0:8011/index.html and you'll be seeing the documentation site:
 
+<img src="https://kt3k.github.io/domaindoc/media/ddd-example.png" />
+
 And when you finish modifying the source files, then hit the command `domaindoc build` like the below:
 
     $ domaindoc build
