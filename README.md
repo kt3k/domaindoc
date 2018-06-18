@@ -134,6 +134,8 @@ basepath: https://example.dom/domaindoc
 
 # Example
 
+This is the demo document from an open-source accounting software [moneybit](https://github.com/kt3k/moneybit).
+
 - [Demo document](http://kt3k.github.io/moneybit/)
   - [The source code](https://github.com/kt3k/moneybit/tree/master/packages/moneybit-domain)
 
