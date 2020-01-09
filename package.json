@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "codecov": "^3.0.2",
-    "husky": "^3.0.0",
+    "husky": "^4.0.2",
     "kocha": "^1.9.1",
     "lint-staged": "^9.0.1",
     "nyc": "^15.0.0",
