@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/kt3k/domaindoc.svg?style=svg)](https://circleci.com/gh/kt3k/domaindoc)
 [![codecov](https://codecov.io/gh/kt3k/domaindoc/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/domaindoc)
-[![Greenkeeper badge](https://badges.greenkeeper.io/kt3k/domaindoc.svg)](https://greenkeeper.io/)
+
 
 > :ocean: Static site generator for Domain Models
 
