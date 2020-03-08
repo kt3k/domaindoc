@@ -41,7 +41,7 @@
   },
   "homepage": "https://github.com/kt3k/domaindoc#readme",
   "dependencies": {
-    "berber": "^1.1.1",
+    "berber": "^1.4.0",
     "branch-pipe": "^1.0.1",
     "escape-html": "^1.0.3",
     "gulp-consolidate": "^0.2.0",
