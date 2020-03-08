@@ -3274,14 +3274,6 @@ micromatch@^3.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.2"
 
-micromatch@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-4.0.0.tgz#3d9e7a815fabfb009a10fa5adc268242c6d6088e"
-  integrity sha512-THzpRAtp/NcyqnAzYwvP9V1bMAM4zFs2AR02wwxNLzEbi6Mn2suaQ6lhiD8Ug+X3L3g9grohOe1NGb2m+72eeA==
-  dependencies:
-    braces "^3.0.1"
-    picomatch "^2.0.3"
-
 micromatch@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-4.0.2.tgz#4fcb0999bf9fbc2fcbdd212f6d629b9a56c39259"
@@ -3990,11 +3982,6 @@ path-type@^4.0.0:
 performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
-
-picomatch@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.0.3.tgz#8523b368260e5f6fb5da5e45fc7a582f9a0a15e2"
-  integrity sha512-NSJqCeCfH7loxpU6i04aBiJZv4oZFlLKTLTyoWCpJnC28Qm0T1XUfNfzwLi+vtFNGIjc9pyvx/NJUJhFQ3Ptdg==
 
 picomatch@^2.0.5:
   version "2.0.7"
