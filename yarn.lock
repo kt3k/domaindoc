@@ -2092,14 +2092,14 @@ gulp-front-matter@^1.3.0:
     tryit "^1.0.1"
     vinyl-bufferstream "^1.0.1"
 
-gulp-markdown@^5.0.0:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/gulp-markdown/-/gulp-markdown-5.0.1.tgz#9a98893baf39bbd707e6fddc027c29de1bf407b1"
-  integrity sha512-Wv6VdgSQKOfgRLR69OogYpqkudHkwV3keVxwRQh600cJTDYx7Yq4TA5m5EnXzLpa7qfyiW/fFdRiObaN5Wkkcg==
+gulp-markdown@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/gulp-markdown/-/gulp-markdown-5.1.0.tgz#af7a1a2419b35f47a208055ced3b6fd29a3e4def"
+  integrity sha512-mvXwXbbJ58NwFGMlJBAyfMod322g3uDhi0GpOxel8hGdABNSZ6Jza55lQI6KAU/D3RkL9Rd6uNqOHzmmj4NubA==
   dependencies:
-    marked "^0.7.0"
+    marked "^1.1.0"
     plugin-error "^1.0.1"
-    through2 "^3.0.1"
+    through2 "^4.0.2"
 
 gulp-plumber@^1.1.0:
   version "1.1.0"
@@ -3266,10 +3266,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-marked@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-0.7.0.tgz#b64201f051d271b1edc10a04d1ae9b74bb8e5c0e"
-  integrity sha512-c+yYdCZJQrsRjTPhUx7VKkApw9bwDkNbHUKo1ovgcfDjb2kc8rLuRbIFyXL5WOEUwzSSKo3IXpph2K6DqB/KZg==
+marked@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-1.1.1.tgz#e5d61b69842210d5df57b05856e0c91572703e6a"
+  integrity sha512-mJzT8D2yPxoPh7h0UXkB+dBj4FykPJ2OIfxAWeIHrvoHDkFxukV/29QxoFQoPM6RLEwhIFdJpmKBlqVM3s2ZIw==
 
 merge-stream@^1.0.0, merge-stream@^1.0.1:
   version "1.0.1"
@@ -4202,10 +4202,10 @@ read-pkg@^2.0.0:
     normalize-package-data "^2.3.2"
     path-type "^2.0.0"
 
-"readable-stream@2 || 3":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.3.0.tgz#cb8011aad002eb717bf040291feba8569c986fb9"
-  integrity sha512-EsI+s3k3XsW+fU8fQACLN59ky34AZ14LoeVZpYwmZvldCFo0r0gnelwF2TcMjLor/BTL5aDJVBMkss0dthToPw==
+readable-stream@3:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.6.0.tgz#337bbda3adc0706bd3e024426a286d4b4b2c9198"
+  integrity sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA==
   dependencies:
     inherits "^2.0.3"
     string_decoder "^1.1.1"
@@ -5011,12 +5011,12 @@ through2@^2.0.3:
     readable-stream "~2.3.6"
     xtend "~4.0.1"
 
-through2@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/through2/-/through2-3.0.1.tgz#39276e713c3302edf9e388dd9c812dd3b825bd5a"
-  integrity sha512-M96dvTalPT3YbYLaKaCuwu+j06D/8Jfib0o/PxbVt6Amhv3dUAtW6rTV1jPgJSBG83I/e04Y6xkVdVhSRhi0ww==
+through2@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/through2/-/through2-4.0.2.tgz#a7ce3ac2a7a8b0b966c80e7c49f0484c3b239764"
+  integrity sha512-iOqSav00cVxEEICeD7TjLB1sueEL+81Wpzp2bY17uZjZN0pWZPuo4suZ/61VujxmqSGFfgOcNuTZ85QJwNZQpw==
   dependencies:
-    readable-stream "2 || 3"
+    readable-stream "3"
 
 through@^2.3.6:
   version "2.3.8"
